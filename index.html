@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+ 
+    <title>Registratie</title>
+    <link type="text/css" rel="stylesheet" href="assets/css/screen.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+</head>
+<body>
+<div data-role="page" id="home">
+	<header data-role="header" data-position="fixed" data-position="left" >
+        <h1>Registratie</h1>
+        <nav>
+            <ul data-role="controlgroup"  >
+                <li class="ui-btn ui-btn-inline "><a href="home" >Home</a></li>
+                <li class="ui-btn ui-btn-inline "><a href="email" >Email</a></li>
+                <li class="ui-btn ui-btn-inline "><a href="gsm" >Gsm</a></li>
+            </ul>
+        </nav>
+    </header>
+
+	<main data-role="main" >
+        <ul data-role="controlgroup" data-type="vertical">
+            <li><div id="eid-reg" class="ui-btn">Registreer met e-Id kaart</div></li>
+            <li><a href="#man-name" class="ui-btn">Geef manueel uw gegevens in</a></li>
+        </ul>
+	</main>
+</div>
+
+
+<div data-role="page" id="man-name">
+    <form method="get">
+        <fieldset>
+            <label for="naam">Voornaam</label>
+            <input type="text" id="naam" name="naam" >
+
+            <label for="achternaam">Achternaam</label>
+            <input type="text" id="achternaam" name="achternaam"/>
+
+	        <a href="#man-adres" class="ui-btn">Doorgaan</a>
+        </fieldset>
+
+    </form>
+</div>
+
+<div data-role="page" id="man-adres">
+	<form>
+        <fieldset >
+            <label for="adres">Adres</label>
+            <input type="text" id="adres" name="adres"/>
+            <label for="huisnummer">Huisnummer</label>
+            <input type="number" id="huisnummer" name="huisnummer"/>
+
+            <label for="postcode">Postcode</label>
+            <input type="number" id="postcode" name="postcode"/>
+            <label for="gemeente">Gemeente</label>
+            <input type="text" id="gemeente" name="gemeente"/>
+
+	        <a href="#man-adres" class="ui-btn">Doorgaan</a>
+        </fieldset>
+	</form>
+</div>
+<div data-role="page" id="man-gebdate">
+	<form>
+        <fieldset >
+            <label for="geboortedatum">Geboortedatum</label>
+            <input type="date" id="geboortedatum" name="geboortedatum"/>
+        </fieldset>
+
+        <input id="usergebdate" type="submit" value="Doorgaan">
+    </form>
+</div>
+<div data-role="page"></div>
+
+	<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <script src="assets/js/script.js"></script>
+</body>
+</html>
