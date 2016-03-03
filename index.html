@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
 </head>
 <body>
+
+
 <div data-role="page" id="home">
 	<header data-role="header" data-position="fixed"  >
         <h1>Registratie</h1>
@@ -17,7 +19,6 @@
             <ul data-role="controlgroup"  >
                 <li class="ui-btn ui-btn-inline "><a href="#home" >Home</a></li>
                 <li class="ui-btn ui-btn-inline "><a href="#email" >Email</a></li>
-                <li class="ui-btn ui-btn-inline "><a href="#gsm" >Gsm</a></li>
             </ul>
         </nav>
     </header>
@@ -64,6 +65,9 @@
 	            <input type="text" id="straat" name="straat" required/>
 	            <label for="huisnummer">Huisnummer</label>
 	            <input type="number" id="huisnummer" name="huisnummer" required/>
+		        <label for="bus">Huisnummer</label>
+		        <input type="number" id="bus" name="bus" required/>
+
 
 	            <label for="postcode">Postcode</label>
 	            <input type="number" id="postcode" name="postcode" required/>
@@ -71,7 +75,7 @@
 	            <input type="text" id="gemeente" name="gemeente" required/>
 
 
-		        <a href="#man-gebdate" class="ui-btn">Doorgaan</a>
+		        <a href="#man-gebdate" data-role="button" class="ui-btn">Doorgaan</a>
 		        <!--<input  type="submit" value="Doorgaan">-->
 	        </fieldset>
 		</form>
@@ -105,31 +109,40 @@
 			<div class="col-sm-4 col-sm-offset-1">
 				<img src="assets/image/e5modelogo.jpg" class="img-rounded">
 			</div>
-			<div id="gegevens" class="col-sm-3">
-				<h2 >naam <span class="glyphicon glyphicon-pencil"></span></h2>
-				<p >geslacht<span class="glyphicon glyphicon-pencil"></span></p>
-				<p >adres straat, nr, [bus??]<span class="glyphicon glyphicon-pencil"></span></p>
-				<p >postcode, gemeente<span class="glyphicon glyphicon-pencil"></span></p>
-				<p >geboortedatum<span class="glyphicon glyphicon-pencil"></span></p>
+			<div id="gegevens" class="col-sm-6">
+				<h2 data-info="naam">naam voornaam <span class="glyphicon glyphicon-pencil"></span></h2>
+				<p data-info="geslacht">geslacht <span class="glyphicon glyphicon-pencil"></span></p>
+				<p data-info="straat_nummer">straat, nr, [bus??] <span class="glyphicon glyphicon-pencil"></span></p>
+				<p >postcode, gemeente <span class="glyphicon glyphicon-pencil"></span></p>
+				<p >geboortedatum <span class="glyphicon glyphicon-pencil"></span></p>
+
+				<p class="hide">email <span class="glyphicon glyphicon-pencil"></span></p>
+				<p class="hide">Telefoon <span class="glyphicon glyphicon-pencil"></span></p>
+			</div>
+			<div class="col-sm-10 col-sm-offset-1">
+				<label><input type="checkbox" id="check-partner" checked> Mijn gegevens mogen gebruikt worden voor partner aanbiedingen</label>
+				<label><input type="checkbox" id="check-acties" checked> Ik wil niet geinformeerd worden over acties van e5mode</label>
 			</div>
 		</div>
-		<a href="#optionalinfo" class="ui-btn">verder</a>
+		<a href="#optionalinfo" class="ui-btn" id="confirm">verder</a>
+		<a id="voltooien" class="ui-btn hide" >Voltooien</a>
+
 	</main>
 </div>
 
-<!--
-<div data-role="page" id="changeInput">
+
+<div data-role="dialog" id="changeInput">
 	<header data-role="header" data-position="fixed">
 		<h1>Pas Je gegevens aan</h1>
 	</header>
-	<label>{{input}}</label>
-	<input type="text"> <!--{{input.type}} {{input.name}}--
+	<label>{{input.name}}</label>
+	<input type="text"> <!--{{input.type}} {{input.name}}-->
 	<a href="#confirm-user" class="ui-btn">Doorgaan</a>
 </div>
--->
+
 
 <div data-role="page" id="optionalinfo">
-	<form>
+	<form method="post">
 		<label>Email</label>
 		<input type="email" id="email" name="email">
 
@@ -137,7 +150,15 @@
 		<input type="number" id="telefoon" name="telefoon">
 	</form>
 
-	<input type="submit" value="Afwerken">
+	<a href="#confirm-user" class="ui-btn">Verder</a>
+</div>
+
+<div data-role="page" id="confirm-succes">
+	<h1>Succes!</h1>
+</div>
+
+<div data-role="page" id="confirm-fail">
+	<h1>Something went wrong</h1>
 </div>
 
 	<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>

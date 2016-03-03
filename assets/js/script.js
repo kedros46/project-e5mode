@@ -5,16 +5,17 @@
 $(function(){
    console.log("ready");
 
-    $("input").change(function(){
-        console.log($(this).val());
-    });
-
     $(".userinfo").submit(confirmuserinfo);
-    $("#gegevens").bind("click", "h2, p", changeInput)
+    $("#confirm").bind("click", function(){
+        $(this).hide();
+        $("#voltooien").removeClass("hide");
+    });
+    $("#gegevens>h2, #gegevens>p").bind("click", changeInput);
 });
 
 
 function confirmuserinfo() {
+    window.location.href = "#confirm-user";
     var person = {
         voornaam: $("#naam").val(),
         achternaam: $("#achternaam").val(),
@@ -25,11 +26,12 @@ function confirmuserinfo() {
             gemeente: $("#gemeente").val()
         },
         geslacht: $("input[type='radio']:checked").data("geslacht"),
-        geboortedatum: $("#geboortedatum").val()
+        geboortedatum: $("#geboortedatum").val(),
+        email: $("#email").val(),
+        telefoon: $("#telefon").val()
     };
 
     console.log(person);
-
     /*
     $.ajax({
         url: $(this).attr('action'),
@@ -43,9 +45,20 @@ function confirmuserinfo() {
         //generate the fail screen
     });
     */
+
+
 }
 
 
 function changeInput() {
-    //later
+    console.log($(this));
+    var info = $(this).data("info");
+    var value = $(this).text();
+
+    console.log(info + " - " + value);
+
+    var page = $("#changeInput");
+    page.find("label").text(info);
+    page.find("input").attr("type", typeof info).attr("name", info).val(value);
+    window.location.href = "#changeInput";
 }
