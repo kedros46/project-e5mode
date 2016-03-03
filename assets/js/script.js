@@ -11,6 +11,6 @@ $(function(){
 
 function confirmuserinfo() {
     var person = {
-        name: $("#naam")
+        name: $("#naam").val();
     }
 }
