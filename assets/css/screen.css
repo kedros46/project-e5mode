@@ -10,3 +10,10 @@
     display: inline-block;
     width: 20%;
 }
+
+header{
+    margin-bottom: 50px;
+}
+a.ui-btn{
+    margin-top: 40px;
+}

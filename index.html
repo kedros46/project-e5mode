@@ -6,16 +6,16 @@
  
     <title>Registratie</title>
 	<link rel="stylesheet" href="assets/css/reset.css" />
-	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
 	<link type="text/css" rel="stylesheet" href="assets/css/screen.css">
 </head>
 <body>
 
 
-<div data-role="page" id="home" class="container">
+<div data-role="page" id="home" >
 	<header data-role="header" data-position="fixed"  >
-        <h1>Registratie</h1>
+        <h1><strong>Registratie</strong></h1>
         <!--<nav>
             <ul data-role="controlgroup"  >
                 <li class="ui-btn ui-btn-inline "><a href="#home" >Home</a></li>
@@ -25,7 +25,7 @@
         -->
     </header>
 
-	<main data-role="main" class="">
+	<main data-role="main" class="container">
         <ul data-role="controlgroup" data-type="vertical">
             <li><div id="eid-reg" class="ui-btn">Registreer met e-Id kaart</div></li>
             <li><a href="#man-name" class="ui-btn">Geef manueel uw gegevens in</a></li>
@@ -36,7 +36,7 @@
 
 <div data-role="page" id="man-name">
 	<header data-role="header" data-position="fixed" data-add-back-btn="true">
-		<h1>nananana gegevens</h1>
+		<h1><strong>Vul uw gegevens in</strong></h1>
 	</header>
 
 	<main data-role="main" class="container">
@@ -58,7 +58,7 @@
 
 <div data-role="page" id="man-adres">
 	<header data-role="header" data-position="fixed" data-add-back-btn="true">
-		<h1>nananana gegevens</h1>
+		<h1><strong>Vul uw gegevens in</strong></h1>
 	</header>
 
 	<main data-role="main" class="container">
@@ -70,7 +70,7 @@
 		            <label for="huisnummer">Huisnummer</label>
 		            <input type="number" id="huisnummer" name="huisnummer" required/>
 			        <label for="bus">Bus</label>
-			        <input type="number" id="bus" name="bus" required class="input-sm"/>
+			        <input type="number" id="bus" name="bus" class="input-sm"/>
 	            </div>
 
 
@@ -89,15 +89,16 @@
 
 <div data-role="page" id="man-gebdate">
 	<header data-role="header" data-position="fixed" data-add-back-btn="true">
-		<h1>nananana Gegevens</h1>
+		<h1><strong>Vul uw gegevens in</strong></h1>
 	</header>
 
 	<main data-role="main" class="container">
 	<form method="post" class="userinfo" action="#confirm-user" >
         <fieldset >
 	        <label >Geslacht</label>
-	        <label><input type="radio" id="man" name="geslacht" data-geslacht="Man" checked required/>Man</label>
-	        <label><input type="radio" id="vrouw" name="geslacht" data-geslacht="Vrouw" required/>Vrouw</label>
+	        <label ><input type="radio" id="man" name="geslacht" data-geslacht="Man" checked required/>Man</label>
+	        <label ><input type="radio" id="vrouw" name="geslacht" data-geslacht="Vrouw" required/>Vrouw</label>
+	        <hr>
             <label for="geboortedatum">Geboortedatum</label>
             <input type="date" id="geboortedatum" name="geboortedatum" required/>
         </fieldset>
@@ -110,12 +111,15 @@
 
 <div data-role="page" id="confirm-user">
 	<main data-role="main" class="container">
-		<h1>We hebben uw gegevens genoteerd</h1>
+		<header data-role="header" data-position="fixed" data-add-back-btn="true">
+			<h1><strong>We hebben uw gegevens genoteerd</strong></h1>
+		</header>
+
 		<div class="row top-buffer">
-			<div class="col-sm-4 col-sm-offset-1">
+			<div class="col-sm-4 col-sm-offset-1 col-md-4 col-md-offset-1">
 				<img src="assets/image/e5modelogo.jpg" class="img-rounded">
 			</div>
-			<div id="gegevens" class="col-sm-6">
+			<div id="gegevens" class="col-sm-6 col-md-6">
 				<h2 data-info="naam">naam voornaam <span class="glyphicon glyphicon-pencil"></span></h2>
 				<p data-info="geslacht">geslacht <span class="glyphicon glyphicon-pencil"></span></p>
 				<p data-info="straat_nummer">straat, nr, [bus??] <span class="glyphicon glyphicon-pencil"></span></p>
@@ -125,11 +129,13 @@
 				<p class="hide">email <span class="glyphicon glyphicon-pencil"></span></p>
 				<p class="hide">Telefoon <span class="glyphicon glyphicon-pencil"></span></p>
 			</div>
+
 			<div class="col-sm-10 col-sm-offset-1">
 				<label><input type="checkbox" id="check-partner" checked> Mijn gegevens mogen gebruikt worden voor partner aanbiedingen</label>
 				<label><input type="checkbox" id="check-acties" checked> Ik wil niet geinformeerd worden over acties van e5mode</label>
 			</div>
 		</div>
+
 		<a href="#optionalinfo" class="ui-btn" id="confirm">verder</a>
 		<a id="voltooien" class="ui-btn hide" >Voltooien</a>
 
@@ -139,24 +145,31 @@
 
 <div data-role="dialog" id="changeInput">
 	<header data-role="header" data-position="fixed">
-		<h1>Pas Je gegevens aan</h1>
+		<h1><strong>Pas Je gegevens aan</strong></h1>
 	</header>
-	<label>{{input.name}}</label>
-	<input type="text"> <!--{{input.type}} {{input.name}}-->
+	<main data-role="main" class="container">
+		<label>{{input.name}}</label>
+		<input type="text"> <!--{{input.type}} {{input.name}}-->
+	</main>
 	<a href="#confirm-user" class="ui-btn">Doorgaan</a>
 </div>
 
 
 <div data-role="page" id="optionalinfo">
-	<form method="post">
-		<label>Email</label>
-		<input type="email" id="email" name="email">
+	<header data-role="header" data-add-back-btn="true">
+		<h1><strong>Optionele gegevens</strong></h1>
+	</header>
+	<main data-role="main" class="container">
+		<form method="post">
+			<label>Email</label>
+			<input type="email" id="email" name="email">
+			<hr>
+			<label for="telefoon">Telefoon</label>
+			<input type="number" id="telefoon" name="telefoon">
+		</form>
 
-		<label for="telefoon">Telefoon</label>
-		<input type="number" id="telefoon" name="telefoon">
-	</form>
-
-	<a href="#confirm-user" class="ui-btn">Verder</a>
+		<a href="#confirm-user" class="ui-btn">Verder</a>
+	</main>
 </div>
 
 <div data-role="page" id="confirm-succes">
