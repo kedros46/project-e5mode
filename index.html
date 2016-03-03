@@ -32,48 +32,70 @@
 
 
 <div data-role="page" id="man-name">
-    <form method="get">
-        <fieldset>
-            <label for="naam">Voornaam</label>
-            <input type="text" id="naam" name="naam" >
+	<main data-role="main">
+	    <form method="get">
+	        <fieldset>
+	            <label for="naam">Voornaam</label>
+	            <input type="text" id="naam" name="naam"  required>
 
-            <label for="achternaam">Achternaam</label>
-            <input type="text" id="achternaam" name="achternaam"/>
+	            <label for="achternaam">Achternaam</label>
+	            <input type="text" id="achternaam" name="achternaam" required/>
 
-	        <a href="#man-adres" class="ui-btn">Doorgaan</a>
-        </fieldset>
-
-    </form>
+		        <a href="#man-adres" class="ui-btn">Doorgaan</a>
+	        </fieldset>
+	    </form>
+	</main>
 </div>
 
 <div data-role="page" id="man-adres">
-	<form>
-        <fieldset >
-            <label for="adres">Adres</label>
-            <input type="text" id="adres" name="adres"/>
-            <label for="huisnummer">Huisnummer</label>
-            <input type="number" id="huisnummer" name="huisnummer"/>
+	<main>
+		<form>
+	        <fieldset >
+	            <label for="adres">Adres</label>
+	            <input type="text" id="adres" name="adres" required/>
+	            <label for="huisnummer">Huisnummer</label>
+	            <input type="number" id="huisnummer" name="huisnummer" required/>
 
-            <label for="postcode">Postcode</label>
-            <input type="number" id="postcode" name="postcode"/>
-            <label for="gemeente">Gemeente</label>
-            <input type="text" id="gemeente" name="gemeente"/>
+	            <label for="postcode">Postcode</label>
+	            <input type="number" id="postcode" name="postcode" required/>
+	            <label for="gemeente">Gemeente</label>
+	            <input type="text" id="gemeente" name="gemeente" required/>
 
-	        <a href="#man-adres" class="ui-btn">Doorgaan</a>
-        </fieldset>
-	</form>
+		        <a href="#man-gebdate" class="ui-btn">Doorgaan</a>
+	        </fieldset>
+		</form>
+	</main>
 </div>
 <div data-role="page" id="man-gebdate">
+	<main>
 	<form>
         <fieldset >
+	        <label >Geslacht</label>
+	        <label><input type="radio" id="man" name="geslacht" checked required/>Man</label>
+	        <label><input type="radio" id="vrouw" name="geslacht" required/>Vrouw</label>
             <label for="geboortedatum">Geboortedatum</label>
-            <input type="date" id="geboortedatum" name="geboortedatum"/>
+            <input type="date" id="geboortedatum" name="geboortedatum" required/>
         </fieldset>
 
         <input id="usergebdate" type="submit" value="Doorgaan">
     </form>
+	</main>
 </div>
-<div data-role="page"></div>
+
+<div data-role="page" id="confirm-user">
+	<h1>We hebbe, uw gegevens genoteerd</h1>
+	<div id="gegevens">
+		<h2>naam</h2>
+		<p>geslacht</p>
+		<p>adres straat, nr, [bus??]</p>
+		<p>postcode, gemeente</p>
+		<p>geboortedatum</p>
+	</div>
+	<a href="#oprionalinfo"
+</div>
+<div data-role="page" id="">
+
+</div>
 
 	<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
 	<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>

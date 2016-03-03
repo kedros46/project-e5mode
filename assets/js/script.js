@@ -3,4 +3,14 @@
  */
 $(function(){
    console.log("ready");
+
+
+    $("#usergebdate").submit(confirmuserinfo)
 });
+
+
+function confirmuserinfo() {
+    var person = {
+        name: $("#naam")
+    }
+}
