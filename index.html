@@ -32,6 +32,10 @@
 
 
 <div data-role="page" id="man-name">
+	<header data-role="header" data-position="fixed" data-add-back-btn="true">
+		<h1>nananana gegevens</h1>
+	</header>
+
 	<main data-role="main">
 	    <form method="post" class="userinfo" >
 	        <fieldset>
@@ -49,6 +53,10 @@
 </div>
 
 <div data-role="page" id="man-adres">
+	<header data-role="header" data-position="fixed" data-add-back-btn="true">
+		<h1>nananana gegevens</h1>
+	</header>
+
 	<main>
 		<form method="post" class="userinfo" >
 	        <fieldset >
@@ -70,8 +78,12 @@
 	</main>
 </div>
 <div data-role="page" id="man-gebdate">
+	<header data-role="header" data-position="fixed" data-add-back-btn="true">
+		<h1>nananana Gegevens</h1>
+	</header>
+
 	<main>
-	<form method="post" class="userinfo" >
+	<form method="post" class="userinfo" action="#confirm-user" >
         <fieldset >
 	        <label >Geslacht</label>
 	        <label><input type="radio" id="man" name="geslacht" data-geslacht="Man" checked required/>Man</label>
@@ -87,18 +99,22 @@
 </div>
 
 <div data-role="page" id="confirm-user">
-	<h1>We hebben uw gegevens genoteerd</h1>
-	<div class="col-sm-4">
-		<img src="assets/image/e5modelogo.png" class="img-rounded">
-	</div>
-	<div id="gegevens" class="col-sm-6">
-		<h2 >naam <span class="glyphicon glyphicon-pencil"></span></h2>
-		<p >geslacht<span class="glyphicon glyphicon-pencil"></span></p>
-		<p >adres straat, nr, [bus??]<span class="glyphicon glyphicon-pencil"></span></p>
-		<p >postcode, gemeente<span class="glyphicon glyphicon-pencil"></span></p>
-		<p >geboortedatum<span class="glyphicon glyphicon-pencil"></span></p>
-	</div>
-	<a href="#optionalinfo" class="ui-btn">verder</a>
+	<main data-role="main">
+		<h1>We hebben uw gegevens genoteerd</h1>
+		<div class="row top-buffer">
+			<div class="col-sm-4 col-sm-offset-1">
+				<img src="assets/image/e5modelogo.jpg" class="img-rounded">
+			</div>
+			<div id="gegevens" class="col-sm-3">
+				<h2 >naam <span class="glyphicon glyphicon-pencil"></span></h2>
+				<p >geslacht<span class="glyphicon glyphicon-pencil"></span></p>
+				<p >adres straat, nr, [bus??]<span class="glyphicon glyphicon-pencil"></span></p>
+				<p >postcode, gemeente<span class="glyphicon glyphicon-pencil"></span></p>
+				<p >geboortedatum<span class="glyphicon glyphicon-pencil"></span></p>
+			</div>
+		</div>
+		<a href="#optionalinfo" class="ui-btn">verder</a>
+	</main>
 </div>
 
 <!--
