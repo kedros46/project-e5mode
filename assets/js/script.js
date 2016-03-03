@@ -1,3 +1,6 @@
+function sendUserinfo() {
+    $.ajax({url: "", type: "json", datatype:person}).done().fail();
+}
 /**
  * Created by brecht on 25/02/2016.
  */
@@ -11,6 +14,7 @@ $(function(){
         $("#voltooien").removeClass("hide");
     });
     $("#gegevens>h2, #gegevens>p").bind("click", changeInput);
+    $("#voltooien").on("click", sendUserinfo)
 });
 
 

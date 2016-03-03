@@ -5,25 +5,27 @@
     <meta charset="UTF-8">
  
     <title>Registratie</title>
-    <link type="text/css" rel="stylesheet" href="assets/css/screen.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+	<link rel="stylesheet" href="assets/css/reset.css" />
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
+	<link type="text/css" rel="stylesheet" href="assets/css/screen.css">
 </head>
 <body>
 
 
-<div data-role="page" id="home">
+<div data-role="page" id="home" class="container">
 	<header data-role="header" data-position="fixed"  >
         <h1>Registratie</h1>
-        <nav>
+        <!--<nav>
             <ul data-role="controlgroup"  >
                 <li class="ui-btn ui-btn-inline "><a href="#home" >Home</a></li>
                 <li class="ui-btn ui-btn-inline "><a href="#email" >Email</a></li>
             </ul>
-        </nav>
+            </nav>
+        -->
     </header>
 
-	<main data-role="main" >
+	<main data-role="main" class="">
         <ul data-role="controlgroup" data-type="vertical">
             <li><div id="eid-reg" class="ui-btn">Registreer met e-Id kaart</div></li>
             <li><a href="#man-name" class="ui-btn">Geef manueel uw gegevens in</a></li>
@@ -37,9 +39,9 @@
 		<h1>nananana gegevens</h1>
 	</header>
 
-	<main data-role="main">
+	<main data-role="main" class="container">
 	    <form method="post" class="userinfo" >
-	        <fieldset>
+	        <fieldset >
 	            <label for="naam">Voornaam</label>
 	            <input type="text" id="naam" name="naam"  required>
 
@@ -53,20 +55,23 @@
 	</main>
 </div>
 
+
 <div data-role="page" id="man-adres">
 	<header data-role="header" data-position="fixed" data-add-back-btn="true">
 		<h1>nananana gegevens</h1>
 	</header>
 
-	<main>
+	<main data-role="main" class="container">
 		<form method="post" class="userinfo" >
 	        <fieldset >
 	            <label for="straat">Straat</label>
 	            <input type="text" id="straat" name="straat" required/>
-	            <label for="huisnummer">Huisnummer</label>
-	            <input type="number" id="huisnummer" name="huisnummer" required/>
-		        <label for="bus">Huisnummer</label>
-		        <input type="number" id="bus" name="bus" required/>
+	            <div>
+		            <label for="huisnummer">Huisnummer</label>
+		            <input type="number" id="huisnummer" name="huisnummer" required/>
+			        <label for="bus">Bus</label>
+			        <input type="number" id="bus" name="bus" required class="input-sm"/>
+	            </div>
 
 
 	            <label for="postcode">Postcode</label>
@@ -81,12 +86,13 @@
 		</form>
 	</main>
 </div>
+
 <div data-role="page" id="man-gebdate">
 	<header data-role="header" data-position="fixed" data-add-back-btn="true">
 		<h1>nananana Gegevens</h1>
 	</header>
 
-	<main>
+	<main data-role="main" class="container">
 	<form method="post" class="userinfo" action="#confirm-user" >
         <fieldset >
 	        <label >Geslacht</label>
@@ -103,7 +109,7 @@
 </div>
 
 <div data-role="page" id="confirm-user">
-	<main data-role="main">
+	<main data-role="main" class="container">
 		<h1>We hebben uw gegevens genoteerd</h1>
 		<div class="row top-buffer">
 			<div class="col-sm-4 col-sm-offset-1">

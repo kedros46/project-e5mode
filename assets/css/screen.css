@@ -5,3 +5,8 @@
 /*input[type="checkbox"]{*/
     /*display: inline-block;*/
 /*}*/
+
+#man-adres div>label , div>label+input{
+    display: inline-block;
+    width: 20%;
+}
