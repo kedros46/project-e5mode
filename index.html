@@ -11,13 +11,13 @@
 </head>
 <body>
 <div data-role="page" id="home">
-	<header data-role="header" data-position="fixed" data-position="left" >
+	<header data-role="header" data-position="fixed"  >
         <h1>Registratie</h1>
         <nav>
             <ul data-role="controlgroup"  >
-                <li class="ui-btn ui-btn-inline "><a href="home" >Home</a></li>
-                <li class="ui-btn ui-btn-inline "><a href="email" >Email</a></li>
-                <li class="ui-btn ui-btn-inline "><a href="gsm" >Gsm</a></li>
+                <li class="ui-btn ui-btn-inline "><a href="#home" >Home</a></li>
+                <li class="ui-btn ui-btn-inline "><a href="#email" >Email</a></li>
+                <li class="ui-btn ui-btn-inline "><a href="#gsm" >Gsm</a></li>
             </ul>
         </nav>
     </header>
@@ -33,7 +33,7 @@
 
 <div data-role="page" id="man-name">
 	<main data-role="main">
-	    <form method="get">
+	    <form method="post" class="userinfo" >
 	        <fieldset>
 	            <label for="naam">Voornaam</label>
 	            <input type="text" id="naam" name="naam"  required>
@@ -41,7 +41,8 @@
 	            <label for="achternaam">Achternaam</label>
 	            <input type="text" id="achternaam" name="achternaam" required/>
 
-		        <a href="#man-adres" class="ui-btn">Doorgaan</a>
+				<a href="#man-adres" class="ui-btn">Doorgaan</a>
+		        <!--<input  type="submit" value="Doorgaan">-->
 	        </fieldset>
 	    </form>
 	</main>
@@ -49,10 +50,10 @@
 
 <div data-role="page" id="man-adres">
 	<main>
-		<form>
+		<form method="post" class="userinfo" >
 	        <fieldset >
-	            <label for="adres">Adres</label>
-	            <input type="text" id="adres" name="adres" required/>
+	            <label for="straat">Straat</label>
+	            <input type="text" id="straat" name="straat" required/>
 	            <label for="huisnummer">Huisnummer</label>
 	            <input type="number" id="huisnummer" name="huisnummer" required/>
 
@@ -61,40 +62,64 @@
 	            <label for="gemeente">Gemeente</label>
 	            <input type="text" id="gemeente" name="gemeente" required/>
 
+
 		        <a href="#man-gebdate" class="ui-btn">Doorgaan</a>
+		        <!--<input  type="submit" value="Doorgaan">-->
 	        </fieldset>
 		</form>
 	</main>
 </div>
 <div data-role="page" id="man-gebdate">
 	<main>
-	<form>
+	<form method="post" class="userinfo" >
         <fieldset >
 	        <label >Geslacht</label>
-	        <label><input type="radio" id="man" name="geslacht" checked required/>Man</label>
-	        <label><input type="radio" id="vrouw" name="geslacht" required/>Vrouw</label>
+	        <label><input type="radio" id="man" name="geslacht" data-geslacht="Man" checked required/>Man</label>
+	        <label><input type="radio" id="vrouw" name="geslacht" data-geslacht="Vrouw" required/>Vrouw</label>
             <label for="geboortedatum">Geboortedatum</label>
             <input type="date" id="geboortedatum" name="geboortedatum" required/>
         </fieldset>
 
-        <input id="usergebdate" type="submit" value="Doorgaan">
+
+        <input  type="submit" value="Doorgaan">
     </form>
 	</main>
 </div>
 
 <div data-role="page" id="confirm-user">
-	<h1>We hebbe, uw gegevens genoteerd</h1>
-	<div id="gegevens">
-		<h2>naam</h2>
-		<p>geslacht</p>
-		<p>adres straat, nr, [bus??]</p>
-		<p>postcode, gemeente</p>
-		<p>geboortedatum</p>
+	<h1>We hebben uw gegevens genoteerd</h1>
+	<div class="col-sm-4">
+		<img src="assets/image/e5modelogo.png" class="img-rounded">
 	</div>
-	<a href="#oprionalinfo"
+	<div id="gegevens" class="col-sm-6">
+		<h2 >naam <span class="glyphicon glyphicon-pencil"></span></h2>
+		<p >geslacht<span class="glyphicon glyphicon-pencil"></span></p>
+		<p >adres straat, nr, [bus??]<span class="glyphicon glyphicon-pencil"></span></p>
+		<p >postcode, gemeente<span class="glyphicon glyphicon-pencil"></span></p>
+		<p >geboortedatum<span class="glyphicon glyphicon-pencil"></span></p>
+	</div>
+	<a href="#optionalinfo" class="ui-btn">verder</a>
 </div>
-<div data-role="page" id="">
 
+<div data-role="page" id="changeInput">
+	<header data-role="header" data-position="fixed">
+		<h1>Pas Je gegevens aan</h1>
+	</header>
+	<label>{{input}}</label>
+	<input type="text" <!--{{input.type}}"--> >
+	<a href="#confirm-user" class="ui-btn">Doorgaan</a>
+</div>
+
+<div data-role="page" id="optionalinfo">
+	<form>
+		<label>Email</label>
+		<input type="email" id="email" name="email">
+
+		<label for="telefoon">Telefoon</label>
+		<input type="number" id="telefoon" name="telefoon">
+	</form>
+
+	<input type="submit" value="Afwerken">
 </div>
 
 	<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
