@@ -1,16 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="e5mode">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="UTF-8">
  
     <title>Registratie</title>
-	<link rel="stylesheet" href="assets/css/reset.css" />
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
+	<!--jquery mobile-->
 	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
-	<link type="text/css" rel="stylesheet" href="assets/css/screen.css">
+	<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+	<!--angular-->
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
+	<script src="assets/js/appctrl.js"></script>
+
+	<link rel="stylesheet" href="assets/css/screen.css"/>
+
 </head>
-<body>
+<body ng-controller="registerCtrl">
 
 
 <div data-role="page" id="home" >
@@ -28,27 +35,27 @@
 	<main data-role="main" class="container">
         <ul data-role="controlgroup" data-type="vertical">
             <li><div id="eid-reg" class="ui-btn">Registreer met e-Id kaart</div></li>
-            <li><a href="#man-name" class="ui-btn">Geef manueel uw gegevens in</a></li>
+            <li><a href="#man-name" class="ui-btn" data-transition="slide">Geef manueel uw gegevens in</a></li>
         </ul>
 	</main>
 </div>
 
 
-<div data-role="page" id="man-name">
+<div data-role="page" id="man-name" data-transition="slide">
 	<header data-role="header" data-position="fixed" data-add-back-btn="true">
 		<h1><strong>Vul uw gegevens in</strong></h1>
 	</header>
 
 	<main data-role="main" class="container">
-	    <form method="post" class="userinfo" >
+	    <form method="post" >
 	        <fieldset >
-	            <label for="naam">Voornaam</label>
-	            <input type="text" id="naam" name="naam"  required>
+	            <legend >Voornaam</legend>
+	            <input type="text" id="naam" ng-model="persoon.voornaam" required>
 
-	            <label for="achternaam">Achternaam</label>
-	            <input type="text" id="achternaam" name="achternaam" required/>
+	            <legend >Achternaam</legend>
+	            <input type="text" id="achternaam" ng-model="persoon.achternaam" required/>
 
-				<a href="#man-adres" class="ui-btn">Doorgaan</a>
+				<a href="#man-adres" class="ui-btn" data-transition="slide">Doorgaan</a>
 		        <!--<input  type="submit" value="Doorgaan">-->
 	        </fieldset>
 	    </form>
@@ -56,31 +63,31 @@
 </div>
 
 
-<div data-role="page" id="man-adres">
+<div data-role="page" id="man-adres" >
 	<header data-role="header" data-position="fixed" data-add-back-btn="true">
 		<h1><strong>Vul uw gegevens in</strong></h1>
 	</header>
 
 	<main data-role="main" class="container">
-		<form method="post" class="userinfo" >
+		<form method="post"  >
 	        <fieldset >
+		        <legend>Adres</legend>
 	            <label for="straat">Straat</label>
-	            <input type="text" id="straat" name="straat" required/>
-	            <div>
-		            <label for="huisnummer">Huisnummer</label>
-		            <input type="number" id="huisnummer" name="huisnummer" required/>
-			        <label for="bus">Bus</label>
-			        <input type="number" id="bus" name="bus" class="input-sm"/>
-	            </div>
+	            <input type="text" id="straat" name="straat" ng-model="persoon.adres.straat" required/>
 
+		        <label for="huisnummer" >Huisnummer</label>
+		        <input type="number" id="huisnummer" name="huisnummer" min="0" ng-model="persoon.adres.huisnr" required/>
 
-	            <label for="postcode">Postcode</label>
-	            <input type="number" id="postcode" name="postcode" required/>
-	            <label for="gemeente">Gemeente</label>
-	            <input type="text" id="gemeente" name="gemeente" required/>
+		        <label for="bus" >Bus</label>
+			    <input type="number" id="bus" name="bus" min="0" ng-model="persoon.adres.bus" />
 
+				<label for="postcode">Postcode</label>
+				<input type="number" id="postcode" name="postcode" min="0" ng-model="persoon.adres.postcode" required/>
 
-		        <a href="#man-gebdate" data-role="button" class="ui-btn">Doorgaan</a>
+		        <label for="gemeente">Gemeente</label>
+				<input type="text" id="gemeente" name="gemeente" ng-model="persoon.adres.gemeente" required/>
+
+		        <a href="#man-gebdate" data-role="button" class="ui-btn" data-transition="slide">Doorgaan</a>
 		        <!--<input  type="submit" value="Doorgaan">-->
 	        </fieldset>
 		</form>
@@ -93,95 +100,124 @@
 	</header>
 
 	<main data-role="main" class="container">
-	<form method="post" class="userinfo" action="#confirm-user" >
-        <fieldset >
-	        <label >Geslacht</label>
-	        <label ><input type="radio" id="man" name="geslacht" data-geslacht="Man" checked required/>Man</label>
-	        <label ><input type="radio" id="vrouw" name="geslacht" data-geslacht="Vrouw" required/>Vrouw</label>
-	        <hr>
-            <label for="geboortedatum">Geboortedatum</label>
-            <input type="date" id="geboortedatum" name="geboortedatum" required/>
+	<form method="post" action="#confirm-user" >
+
+        <fieldset data-role="controlgroup" data-type="horizontal">
+	        <legend >Geslacht</legend>
+	        <label for="man">Man</label>
+	        <input type="radio" id="man" name="geslacht" value="Man" ng-model="persoon.geslacht" checked required/>
+	        <label for="vrouw">Vrouw</label>
+	        <input type="radio" id="vrouw" name="geslacht" value="Vrouw" ng-model="persoon.geslacht" required/>
         </fieldset>
 
+		<fieldset>
+            <legend>Geboortedatum</legend>
+            <input type="date" id="geboortedatum" name="geboortedatum" ng-model="persoon.geboortedatum" required/>
+		</fieldset>
 
-        <input  type="submit" value="Doorgaan">
+        <!--<input  type="submit" value="Doorgaan">-->
+		<a href="#confirm-user" class="ui-btn" data-transition="slide">Doorgaan</a>
     </form>
 	</main>
 </div>
 
 <div data-role="page" id="confirm-user">
+
 	<main data-role="main" class="container">
 		<header data-role="header" data-position="fixed" data-add-back-btn="true">
 			<h1><strong>We hebben uw gegevens genoteerd</strong></h1>
 		</header>
 
-		<div class="row top-buffer">
-			<div class="col-sm-4 col-sm-offset-1 col-md-4 col-md-offset-1">
+		<div >
+			<div class="col-sm-4 col-md-4 ">
 				<img src="assets/image/e5modelogo.jpg" class="img-rounded">
 			</div>
-			<div id="gegevens" class="col-sm-6 col-md-6">
-				<h2 data-info="naam">naam voornaam <span class="glyphicon glyphicon-pencil"></span></h2>
-				<p data-info="geslacht">geslacht <span class="glyphicon glyphicon-pencil"></span></p>
-				<p data-info="straat_nummer">straat, nr, [bus??] <span class="glyphicon glyphicon-pencil"></span></p>
-				<p >postcode, gemeente <span class="glyphicon glyphicon-pencil"></span></p>
-				<p >geboortedatum <span class="glyphicon glyphicon-pencil"></span></p>
+			<div id="gegevens" class="col-sm-6 col-md-6" ng-click="changeInput($event)">
+				<tryout>this</tryout>
+				<p>
+					<editable>{{person.achternaam + 0}}</editable>
+					<editable>{{persoon.voornaam}}</editable>
+				</p>
 
-				<p class="hide">email <span class="glyphicon glyphicon-pencil"></span></p>
-				<p class="hide">Telefoon <span class="glyphicon glyphicon-pencil"></span></p>
+				<p >
+					{{persoon.achternaam + 1}}<span class="glyphicon glyphicon-pencil"></span>
+					{{persoon.voornaam }}<span class="glyphicon glyphicon-pencil"></span>
+				</p>
+
+				<p >{{persoon.geslacht}} <span class="glyphicon glyphicon-pencil"></span></p>
+				<p >{{persoon.adres.straat}} {{persoon.adres.huisnr}} {{persoon.adres.bus}}<span class="glyphicon glyphicon-pencil"></span></p>
+				<p >{{persoon.adres.postcode}} {{persoon.adres.gemeente}}<span class="glyphicon glyphicon-pencil"></span></p>
+				<p >{{persoon.geboortedatum | date:shortDate }}<span class="glyphicon glyphicon-pencil"></span></p>
+
+				<p ng-show="filledEmail">{{persoon.email}} <span class="glyphicon glyphicon-pencil"></span></p>
+				<p ng-show="filledTel" >{{persoon.telefoon}} <span class="glyphicon glyphicon-pencil"></span></p>
 			</div>
 
 			<div class="col-sm-10 col-sm-offset-1">
-				<label><input type="checkbox" id="check-partner" checked> Mijn gegevens mogen gebruikt worden voor partner aanbiedingen</label>
-				<label><input type="checkbox" id="check-acties" checked> Ik wil niet geinformeerd worden over acties van e5mode</label>
+				<label>
+					<input type="checkbox" id="check-partner" ng-model="persoon.partners">
+					Mijn gegevens mogen gebruikt worden voor partner aanbiedingen
+				</label>
+				<label>
+					<input type="checkbox" id="check-acties" ng-model="persoon.e5acties">
+					Ik wil geïnformeerd worden over acties van e5mode
+				</label>
 			</div>
 		</div>
 
-		<a href="#optionalinfo" class="ui-btn" id="confirm">verder</a>
-		<a id="voltooien" class="ui-btn hide" >Voltooien</a>
+		<a href="#optionalinfo" id="confirm" class="ui-btn btn-block"  data-transition="slide" ng-show="!voltooien" ng-click="voltooien = true" >verder</a>
+		<a href="#confirm-succes" id="voltooien" class="ui-btn btn-block" data-transition="slide" data-rel="close" ng-show="voltooien">Voltooien</a>
 
+		<button ng-click="showPersoon()">print</button>
 	</main>
 </div>
-
-
-<div data-role="dialog" id="changeInput">
-	<header data-role="header" data-position="fixed">
-		<h1><strong>Pas Je gegevens aan</strong></h1>
-	</header>
-	<main data-role="main" class="container">
-		<label>{{input.name}}</label>
-		<input type="text"> <!--{{input.type}} {{input.name}}-->
-	</main>
-	<a href="#confirm-user" class="ui-btn">Doorgaan</a>
-</div>
-
 
 <div data-role="page" id="optionalinfo">
 	<header data-role="header" data-add-back-btn="true">
 		<h1><strong>Optionele gegevens</strong></h1>
 	</header>
 	<main data-role="main" class="container">
-		<form method="post">
+		<form method="post" class="optionalform">
 			<label>Email</label>
-			<input type="email" id="email" name="email">
+			<input type="email" id="email" name="email" ng-model="persoon.email" ng-change="filledEmail = true">
 			<hr>
 			<label for="telefoon">Telefoon</label>
-			<input type="number" id="telefoon" name="telefoon">
+			<input type="text" id="telefoon" name="telefoon" ng-model="persoon.telefoon" ng-change="filledTel = true">
 		</form>
 
-		<a href="#confirm-user" class="ui-btn">Verder</a>
+		<a href="#confirm-user" class="ui-btn" data-transition="slide">Verder</a>
 	</main>
 </div>
 
 <div data-role="page" id="confirm-succes">
-	<h1>Succes!</h1>
+	<main class="container">
+		<h1>Succes!</h1>
+	</main>
 </div>
 
 <div data-role="page" id="confirm-fail">
-	<h1>Something went wrong</h1>
+	<main class="container">
+		<h1>Something went wrong</h1>
+	</main>
 </div>
 
-	<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
-	<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
-    <script src="assets/js/script.js"></script>
+<div data-role="dialog" id="changeInput" >
+	<header data-role="header" data-position="fixed">
+		<h1><strong>Pas Je gegevens aan</strong></h1>
+	</header>
+
+	<main data-role="main" class="container">
+		<label></label>
+		<input type="" value="" ng-model="dialogChange.model">
+		<!--{{$scope.dialogChange}} {{dialogChange.value}} {{dialogChange.model}} -->
+	</main>
+
+	<a href="#confirm-user" class="ui-btn" >Doorgaan</a>
+</div>
+
+
+
+
+    <!--<script src="assets/js/script.js"></script>-->
 </body>
 </html>

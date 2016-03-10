@@ -1,19 +1,15 @@
-#gegevens>*{
-    display: block;
+main{
+    padding: 20px;
 }
 
-/*input[type="checkbox"]{*/
-    /*display: inline-block;*/
-/*}*/
-
-#man-adres div>label , div>label+input{
-    display: inline-block;
-    width: 20%;
+#gegevens p:first-child{
+    font-weight: bold;
+    font-size: 20px;
 }
 
-header{
-    margin-bottom: 50px;
+#confirm-succes{
+    background: #10f050 ;
 }
-a.ui-btn{
-    margin-top: 40px;
+#confirm-fail{
+    background: #ff0020;
 }
