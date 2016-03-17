@@ -4,28 +4,29 @@
 app.directive("editable", function(){
     return {
         restrict: 'E',
-        replace: true,
         templateUrl: "assets/js/template/editable.html",
         transclude: true,
         scope: { 'edit': '&onclick'}
     }
 });
 
-app.directive("mpage", function(){ //porbably doesnt work correctly
+app.directive("navbar", function(){ //porbably doesnt work correctly
     return {
         restrict: "E",
-        replace: true,
-        transclude: true,
         scope:{ },
-        template: "<div data-role='page' ng-transclude></div>"
+        templateurl: "assets/js/template/navbar.html"
     }
 });
-app.directive("mdialog", function(){
-    return {
-        restrict: 'E',
-        template: "<div data-role='dialog' ng-transclude></div>",
-        scope: {},
-        transclude: true,
-        replace: true
-    }
-})
+
+//directive('ngBindModel',function($compile){
+//    return{
+//        compile:function(tEl,tAtr){
+//            tEl[0].removeAttribute('ng-bind-model')
+//            return function(scope){
+//                tEl[0].setAttribute('ng-model',scope.$eval(tAtr.ngBindModel))
+//                $compile(tEl[0])(scope)
+//                console.info('new compiled element:',tEl[0])
+//            }
+//        }
+//    }
+//});
