@@ -7,7 +7,7 @@ app.directive("editable", function(){
         replace: true,
         templateUrl: "assets/js/template/editable.html",
         transclude: true,
-        scope: { }
+        scope: { 'edit': '&onclick'}
     }
 });
 

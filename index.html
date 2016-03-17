@@ -80,7 +80,7 @@
 		        <input type="number" id="huisnummer" name="huisnummer" min="0" data-ng-model="persoon.adres.huisnr" required/>
 
 		        <label for="bus" >Bus</label>
-			    <input type="number" id="bus" name="bus" min="0" data-ng-model="persoon.adres.bus" />
+			    <input type="number" id="bus" name="bus" min="0" data-ng-model="persoon.adres.bus"  data-ng-change="filledBus = true"/>
 
 				<label for="postcode">Postcode</label>
 				<input type="number" id="postcode" name="postcode" min="0" data-ng-model="persoon.adres.postcode" required/>
@@ -136,31 +136,31 @@
 			<div id="gegevens" class="col-sm-6 col-md-6" data-ng-click="changeInput($event)">
 
 				<p>
-					<editable>{{persoon.achternaam}}</editable>
-					<editable>{{persoon.voornaam}}</editable>
+					<editable data-ng-click="editInput($event, ['achternaam'])" >{{persoon.achternaam}}</editable>
+					<editable data-ng-click="editInput($event, ['voornaam'])" >{{persoon.voornaam}}</editable>
 				</p>
 
 				<p >
-					<editable>{{persoon.geslacht}}</editable>
+					<editable data-ng-click="editInput($event, ['geslacht'])" >{{persoon.geslacht}}</editable>
 				</p>
 				<p >
-					<editable>{{persoon.adres.straat}}</editable>
-					<editable>{{persoon.adres.huisnr}}</editable>
-					<editable>{{persoon.adres.bus}}</editable>
+					<editable data-ng-click="editInput($event, ['adres', 'straat'])" data-info="adres.straat">{{persoon.adres.straat}}</editable>
+					<editable data-ng-click="editInput($event, ['adres', 'huisnr'])">{{persoon.adres.huisnr}}</editable>
+					<editable data-ng-click="editInput($event, ['adres', 'bus'])" data-ng-show="filledTel">{{persoon.adres.bus}}</editable>
 				</p>
 				<p >
-					<editable>{{persoon.adres.postcode}}</editable>
-					<editable>{{persoon.adres.gemeente}}</editable>
+					<editable data-ng-click="editInput($event, ['adres', 'postcode'])">{{persoon.adres.postcode}}</editable>
+					<editable data-ng-click="editInput($event, ['adres', 'gemeente'])">{{persoon.adres.gemeente}}</editable>
 				</p>
 				<p >
-					<editable>{{persoon.geboortedatum | date:shortDate:format }}</editable>
+					<editable data-ng-click="editInput($event, ['geboortedatum'])">{{persoon.geboortedatum | date:shortDate:format }}</editable>
 				</p>
 
 				<p data-ng-show="filledEmail">
-					<editable>{{persoon.email}}</editable>
+					<editable data-ng-click="editInput($event, ['email'])">{{persoon.email}}</editable>
 				</p>
 				<p data-ng-show="filledTel" >
-					<editable>{{persoon.telefoon}}</editable>
+					<editable data-ng-click="editInput($event, ['telefoon'])">{{persoon.telefoon}}</editable>
 				</p>
 			</div>
 
@@ -218,8 +218,8 @@
 	</header>
 
 	<main data-role="main" class="container">
-		<label></label>
-		<input type="" value="" data-ng-model="dialogChange.model">
+		<label>{{dialogEdit.label}}</label>
+		<input type="{{dialogEdit.type}}" value="{{dialogEdit.value}}" data-ng-model="">
 		<!--{{$scope.dialogChange}} {{dialogChange.value}} {{dialogChange.model}} -->
 	</main>
 
