@@ -1,17 +1,17 @@
-<div id="confirm-data" ng-controller="userdataCtrl">
-    <header>
-        <h1>We hebben uw gegevens genoteerd</h1>
-    </header>
+<div id="confirm-data" >
+	<header style="margin-left: 5%">
+		<h1>We hebben uw gegevens genoteerd</h1>
+	</header>
 
-    <div >
+	<div >
         <div class="col-sm-4 col-md-4 ">
             <img src="image/e5modelogo.jpg" >
         </div>
 
         <div id="gegevens" class="col-sm-6 col-md-6">
 
-            <p>
-                <editable data-ng-click="editInput($event, ['achternaam'])" >{{persoon.achternaam}}</editable>
+            <p class="strong">
+                <editable >{{persoon.achternaam}}</editable>
                 <editable >{{persoon.voornaam}}</editable>
             </p>
 
@@ -40,20 +40,21 @@
         </div>
 
         <div class="col-sm-10 col-sm-offset-1 form-group">
-            <button class="btn btn-block">
-            <label >
-                <input type="checkbox" id="check-partner"  data-ng-model="persoon.partners">
-                Mijn gegevens mogen gebruikt worden voor partner aanbiedingen
-            </label>
+            <button class="btn btn-block mcheck ">
+	            <label >
+	                <input type="checkbox" id="check-partner"  data-ng-model="persoon.partners">
+	                Mijn gegevens mogen gebruikt worden voor partner aanbiedingen
+	            </label>
             </button>
-            <button class="btn btn-block">
-            <label >
-                <input type="checkbox" id="check-acties" data-ng-model="persoon.e5acties">
-                Ik wil geïnformeerd worden over acties van e5mode
-            </label>
+
+            <button class="btn btn-block mcheck">
+	            <label >
+	                <input type="checkbox" id="check-acties" data-ng-model="persoon.e5acties">
+	                Ik wil geïnformeerd worden over acties van e5mode
+	            </label>
             </button>
         </div>
 
-        <button class="btn {{progress.btn}} btn-block" >{{progress.text}}</button>
+        <button class="btn {{progress.btn}} btn-block" data-ng-click="goTo(progress.link); progress.update()">{{progress.text}}</button>
     </div>
 </div>

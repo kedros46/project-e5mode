@@ -7,22 +7,22 @@
         <form name="form-date">
             <fieldset >
                 <legend >Geslacht</legend>
-                <div class="form-group">
-                    <label for="man">Man</label>
+	            <div class="mradio">
                     <input type="radio" id="man" name="geslacht" value="Man" data-ng-model="persoon.geslacht"  required/>
-                </div>
-                <div class="form-group">
-                    <label for="vrouw">Vrouw</label>
-                    <input type="radio" id="vrouw" name="geslacht" value="Vrouw" data-ng-model="persoon.geslacht" checked required/>
-                </div>
+	                <label for="man">Man</label>
+	            </div>
+	            <div class="mradio">
+				    <input type="radio" id="vrouw" name="geslacht" value="Vrouw" data-ng-model="persoon.geslacht" checked required/>
+	                <label for="vrouw">Vrouw</label>
+	            </div>
             </fieldset>
 
             <fieldset class="form-group">
                 <legend>Geboortedatum</legend>
-                <input type="date" class="form-control " data-ng-model="persoon.geboortedatum" required/>
+                <input type="date" class="form-control " data-ng-model="persoon.gebooortedatum" required/>
             </fieldset>
 
-            <a href="#/confirm-data" class="btn btn-primary btn-block" data-ng-disable="form-date.$invalid">Doorgaan</a>
+            <a href="#/confirm-data" class="btn btn-primary btn-block" data-ng-disable="form-date.$invalid" data-ng-click="formprogress.check('date')">Doorgaan</a>
         </form>
     </div>
 </div>
