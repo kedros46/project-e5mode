@@ -99,7 +99,6 @@ app.controller('registerCtrl', function ($scope, $http, $location){
     };
 
     $scope.maakNewPersoon = function(){
-        console.log("sending...");
         //show loader
         $scope.httpResult.message = "Sending Data...";
         // ~ $ajax call
