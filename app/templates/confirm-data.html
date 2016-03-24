@@ -11,48 +11,52 @@
         <div id="gegevens" class="col-sm-6 col-md-6">
 
             <p class="strong">
-                <editable >{{persoon.achternaam}}</editable>
-                <editable >{{persoon.voornaam}}</editable>
+<!--
+				<span ng-hide="editing">
+					<span data-ng-click="editing = true; " ng-bind="persoon.achternaam"></span>
+					<span class="fa fa-pencil"></span>
+				</span>
+	            <input type="text" name="achternaam" data-ng-show="editing" data-ng-model="persoon.achternaam" ng-blur="editing = false">
+-->
+
+	            <editable model="persoon.achternaam" editing=false type="text"></editable>
+	            <editable model="persoon.voornaam" editing=false type="text"></editable>
             </p>
 
             <p >
-                <editable  >{{persoon.geslacht}}</editable>
+                <editable  model="persoon.geslacht" editing=false type="text"></editable>
             </p>
             <p >
-                <editable >{{persoon.adres.straat}}</editable>
-                <editable >{{persoon.adres.huisnr}}</editable>
-                <editable  data-ng-show="filledBus">{{persoon.adres.bus}}</editable>
+                <editable model="persoon.adres.straat" editing=false type="text"></editable>
+                <editable model="persoon.adres.huisnr" editing=false type="number"></editable>
+                <editable model="persoon.adres.bus" editing=false type="number" data-ng-show="filledBus"></editable>
             </p>
             <p >
-                <editable >{{persoon.adres.postcode}}</editable>
-                <editable >{{persoon.adres.gemeente}}</editable>
+                <editable model="persoon.adres.postcode" editing=false type="number"></editable>
+                <editable model="persoon.adres.gemeente" editing=false type="text"></editable>
             </p>
             <p >
-                <editable >{{persoon.gebooortedatum | date:shortDate:format }}</editable>
+                <editable model="persoon.gebooortedatum" editing=false type="date"></editable>
             </p>
 
             <p data-ng-show="filledEmail">
-                <editable >{{persoon.email}}</editable>
+                <editable model="persoon.email" editing=false type="email"></editable>
             </p>
             <p data-ng-show="filledTel" >
-                <editable >{{persoon.telefoon}}</editable>
+                <editable model="persoon.telefoon" editing=false type="number"></editable>
             </p>
         </div>
 
         <div class="col-sm-10 col-sm-offset-1 form-group">
-            <button class="btn btn-block mcheck ">
-	            <label >
-	                <input type="checkbox" id="check-partner"  data-ng-model="persoon.partners">
-	                Mijn gegevens mogen gebruikt worden voor partner aanbiedingen
-	            </label>
-            </button>
+	        <div class="mcheck">
+		        <input type="checkbox" id="check-partner"  data-ng-model="persoon.partners">
+		        <label for="check-partner">Mijn gegevens mogen gebruikt worden voor partner aanbiedingen</label>
+	        </div>
 
-            <button class="btn btn-block mcheck">
-	            <label >
-	                <input type="checkbox" id="check-acties" data-ng-model="persoon.e5acties">
-	                Ik wil geïnformeerd worden over acties van e5mode
-	            </label>
-            </button>
+	        <div class="mcheck">
+		        <input type="checkbox" id="check-acties" data-ng-model="persoon.e5acties">
+		        <label for="check-acties"> Ik wil geïnformeerd worden over acties van e5mode</label>
+	        </div>
         </div>
 
         <button class="btn {{progress.btn}} btn-block" data-ng-click="goTo(progress.link); progress.update()">{{progress.text}}</button>

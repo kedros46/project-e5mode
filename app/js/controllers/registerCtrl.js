@@ -4,40 +4,42 @@
 
 app.controller('registerCtrl', function ($scope, $http, $location){
     $scope.persoon = {
-        voornaam: "Brecht",
-        achternaam: "Dhondt",
+        voornaam: "",
+        achternaam: "",
         adres: {
-            straat: "hoekestraat",
-            huisnr: 114,
+            straat: "",
+            huisnr: "",
             bus: "",
-            postcode: 8300,
-            gemeente: "Knokke"
+            postcode: "",
+            gemeente: ""
         },
         geslacht: "Man",
-        gebooortedatum: new Date(),
+        gebooortedatum: new Date() ,
         email: "",
         telefoon: "",
 
         partners: true,
         e5acties: true
     };
-    $scope.initialPerson = angular.copy($scope.persoon);
 
+    $scope.format = "dd/MM/yy";
+    $scope.filledBus = true;
+    $scope.filledEmail = true;
+    $scope.filledTel = true;
+
+
+    $scope.editing = false;
+
+    $scope.initialPerson = angular.copy($scope.persoon);
 
     $scope.formprogress = {
         name: "",
         address: "",
         date: "",
         email: "",
-        check: function(form){ this[form] = " fa fa-check ";}
+        action: function(form, link){ this[form] = " fa fa-check "; $scope.goTo(link);}
     };
-
-    $scope.httpResult = {
-        message: "",
-        result: "",
-        response: "",
-        action: function(){}
-    };
+    $scope.initialForm = angular.copy($scope.formprogress);
 
     $scope.progress = {
         btn: "btn-primary",
@@ -48,22 +50,15 @@ app.controller('registerCtrl', function ($scope, $http, $location){
             $scope.progress.btn = "btn-success";
             $scope.progress.text = "Voltooien";
             $scope.progress.link = "#/voltooid";
-            this.update = $scope.maakNewPersoon();
+            $scope.progress.update = $scope.maakNewPersoon;
         }
     };
+
+    $scope.intialProgress = angular.copy($scope.progress);
 
     $scope.print = function(){
         console.log($scope.formprogress);
     };
-
-    $scope.format = "dd/MM/yy";
-    $scope.filledBus = false;
-    $scope.filledEmail = false;
-    $scope.filledTel = false;
-    $scope.voltooien = false;
-    $scope.atHome = true;
-
-
 
     $scope.dialogEdit = {
         label: "label",
@@ -90,17 +85,27 @@ app.controller('registerCtrl', function ($scope, $http, $location){
 
     $scope.reset = function() {
         $scope.persoon = angular.copy($scope.initialPerson);
-        $scope.formprogress.address = "";
-        $scope.formprogress.name = "";
-        $scope.formprogress.date = "";
-        $scope.formprogress.email = "";
+        $scope.progress = angular.copy($scope.intialProgress);
+        $scope.formprogress = angular.copy($scope.initialForm);
 
         location.href = "#/Home";
     };
 
+
+    $scope.httpResult = {
+        loading: true,
+        message: "",
+        result: "",
+        response: "",
+        action: function(){}
+    };
+    $scope.initialHttp =angular.copy($scope.httpResult);
+
     $scope.maakNewPersoon = function(){
         //show loader
         $scope.httpResult.message = "Sending Data...";
+        $scope.httpResult.loading = true;
+
         // ~ $ajax call
         $http({
             method: "POST",
@@ -123,12 +128,13 @@ app.controller('registerCtrl', function ($scope, $http, $location){
             $scope.httpResult.result = false;
             $scope.httpResult.response = "";
             $scope.httpResult.action = function(){
-                $scope.goTo('#/register');
-                angular.element(document).find("div").eq(0).removeClass("fail");
+                    $scope.goTo('#/register');
+                    angular.element(document).find("div").eq(0).removeClass("fail");
             };
             angular.element(document).find("div").eq(0).addClass("fail");
         }).finally(function(){
             location.href = "#/voltooid";
-        })
+            $scope.httpResult.loading = false;
+        });
     };
 });

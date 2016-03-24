@@ -1,5 +1,6 @@
-<span >
-	<span ng-transclude data-ng-click="edit($event)"></span>
+<span data-ng-click="editing = true" ng-hide="editing">
+	<span data-ng-bind="model"></span>
 	<span class="fa fa-pencil"></span>
 </span>
+<input type="{{type}}" name="editor" id="editor" data-ng-show="editing" data-ng-model="model" ng-blur="editing = false">
 

@@ -8,7 +8,7 @@
             <fieldset >
                 <legend >Geslacht</legend>
 	            <div class="mradio">
-                    <input type="radio" id="man" name="geslacht" value="Man" data-ng-model="persoon.geslacht"  required/>
+                    <input type="radio" id="man" name="geslacht" value="Man" autofocus data-ng-model="persoon.geslacht"  required/>
 	                <label for="man">Man</label>
 	            </div>
 	            <div class="mradio">
@@ -22,7 +22,8 @@
                 <input type="date" class="form-control " data-ng-model="persoon.gebooortedatum" required/>
             </fieldset>
 
-            <a href="#/confirm-data" class="btn btn-primary btn-block" data-ng-disable="form-date.$invalid" data-ng-click="formprogress.check('date')">Doorgaan</a>
+            <button class="btn btn-primary btn-block" data-ng-disable="form-date.$invalid"
+                    data-ng-click="formprogress.action('date', '#/confirm-data')">Doorgaan</button>
         </form>
     </div>
 </div>

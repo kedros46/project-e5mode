@@ -4,12 +4,12 @@
     </header>
 
     <div>
-        <form name="form-address">
+        <form name="formaddress">
             <fieldset >
                 <legend>Adres</legend>
                 <div class="form-group">
                     <label for="straat">Straat</label>
-                    <input type="text" id="straat" class="form-control" name="straat" data-ng-model="persoon.adres.straat" placeholder="Straat" required/>
+                    <input type="text" id="straat" class="form-control" name="straat" autofocus data-ng-model="persoon.adres.straat" placeholder="Straat" required/>
                 </div>
 
                 <div class="form-group clearfix">
@@ -34,7 +34,8 @@
                 </div>
             </fieldset>
 
-            <a href="#/form-date" class="btn btn-primary btn-block" data-ng-disable="form-address.$invalid" data-ng-click="formprogress.check('address')">Doorgaan</a>
+            <button class="btn btn-primary btn-block" data-ng-disabled="formaddress.$invalid"
+                    data-ng-click="formprogress.action('address', '#/form-date')">Doorgaan</button>
         </form>
     </div>
 </div>
