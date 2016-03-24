@@ -1,0 +1,28 @@
+<div id="form-date">
+    <header>
+        <h1>Vul uw gegevens in</h1>
+    </header>
+
+    <div>
+        <form name="form-date">
+            <fieldset >
+                <legend >Geslacht</legend>
+                <div class="form-group">
+                    <label for="man">Man</label>
+                    <input type="radio" id="man" name="geslacht" value="Man" data-ng-model="persoon.geslacht"  required/>
+                </div>
+                <div class="form-group">
+                    <label for="vrouw">Vrouw</label>
+                    <input type="radio" id="vrouw" name="geslacht" value="Vrouw" data-ng-model="persoon.geslacht" checked required/>
+                </div>
+            </fieldset>
+
+            <fieldset class="form-group">
+                <legend>Geboortedatum</legend>
+                <input type="date" class="form-control " data-ng-model="persoon.geboortedatum" required/>
+            </fieldset>
+
+            <a href="#/confirm-data" class="btn btn-primary btn-block" data-ng-disable="form-date.$invalid">Doorgaan</a>
+        </form>
+    </div>
+</div>

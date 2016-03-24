@@ -1,0 +1,19 @@
+<div id="optionalinfo">
+    <header data-role="header" data-add-back-btn="true">
+        <h1>Optionele gegevens</h1>
+    </header>
+    <div >
+        <form method="post" class="optionalform">
+            <div class="form-group">
+                <label>Email</label>
+                <input type="email" class="form-control" data-ng-model="persoon.email" data-ng-change="filledEmail = true">
+            </div>
+            <div class="form-group">
+                <label >Telefoon</label>
+                <input type="text"  class="form-control" data-ng-model="persoon.telefoon" data-ng-change="filledTel = true">
+            </div>
+            <a type='submit' href="#/confirm-data" class="btn btn-primary btn-block" >Verder</a>
+        </form>
+
+    </div>
+</div>
