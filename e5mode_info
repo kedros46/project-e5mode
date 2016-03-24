@@ -1,0 +1,18 @@
+ip vpn: 192.168.112.100
+
+To DO's posts:
+
+- Angular-ui CSS
+- Navbar (home, name, adres, date, telefoon, email)
+- Icons and logo's where possible
+    > navbar completed phases
+    > e5logo /page
+    >
+- Annuleer knop OK
+- templating
+- variable editInput dialog
+- succes-page styling
+
+- implement eid-reader
+- implement scanner
+-
