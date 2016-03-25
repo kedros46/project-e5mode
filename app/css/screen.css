@@ -56,6 +56,13 @@ editable >span{
     border: none;
 }
 
+input.ng-valid{
+    border: 1px limegreen solid;
+}
+input.ng-invalid{
+    border: 1px #b22222 solid;
+    background: #ffccbb;
+}
 
 /* ANIMATIONS*/
 .ng-enter, .ng-leave{

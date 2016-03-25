@@ -11,7 +11,7 @@ var app = angular.module("e5mode",[  "ngAnimate", "ngRoute", "ngSanitize",  "mob
 
 //routing
 app.config(['$routeProvider', '$locationProvider',
-    function($routeProvider, $locationProvider) {
+    function($routeProvider, $locationProvider, $scope) {
     $routeProvider.when('/Home', {
         templateUrl: "templates/Home.html"
     }).when("/register", {
@@ -24,7 +24,13 @@ app.config(['$routeProvider', '$locationProvider',
         templateUrl: "templates/form-date.html"
     }).when('/confirm-data', {
         templateUrl: "templates/confirm-data.html",
-        controller: "userdataCtrl"
+        controller: "userdataCtrl",
+        resolve: function(){
+            $scope.filledBus = $scope.persoon.adres.bus != "";
+            $scope.filledEmail = $scope.persoon.email != "";
+            $scope.filledTel = $scope.persoon.telefoon != "";
+
+        }
     }).when('/optional', {
         templateUrl: "templates/optional.html"
     }).when('/voltooid', {

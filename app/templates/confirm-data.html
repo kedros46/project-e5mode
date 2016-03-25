@@ -19,31 +19,31 @@
 	            <input type="text" name="achternaam" data-ng-show="editing" data-ng-model="persoon.achternaam" ng-blur="editing = false">
 -->
 
-	            <editable model="persoon.achternaam" editing=false type="text"></editable>
-	            <editable model="persoon.voornaam" editing=false type="text"></editable>
+	            <editable model="persoon.achternaam" type="text" required="true"></editable>
+	            <editable model="persoon.voornaam" type="text" required="true" ></editable>
             </p>
 
             <p >
-                <editable  model="persoon.geslacht" editing=false type="text"></editable>
+                <editable  model="persoon.geslacht" type="text" required="true"></editable>
             </p>
             <p >
-                <editable model="persoon.adres.straat" editing=false type="text"></editable>
-                <editable model="persoon.adres.huisnr" editing=false type="number"></editable>
-                <editable model="persoon.adres.bus" editing=false type="number" data-ng-show="filledBus"></editable>
+                <editable model="persoon.adres.straat" type="text" required="true"></editable>
+                <editable model="persoon.adres.huisnr"  type="number" required="true"></editable>
+                <editable model="persoon.adres.bus"  type="number" data-ng-show="filledBus"></editable>
             </p>
             <p >
-                <editable model="persoon.adres.postcode" editing=false type="number"></editable>
-                <editable model="persoon.adres.gemeente" editing=false type="text"></editable>
+                <editable model="persoon.adres.postcode"  type="number" required="true"></editable>
+                <editable model="persoon.adres.gemeente" type="text" required="true"></editable>
             </p>
             <p >
-                <editable model="persoon.gebooortedatum" editing=false type="date"></editable>
+                <editable model="persoon.gebooortedatum" type="date" required="true"></editable>
             </p>
 
             <p data-ng-show="filledEmail">
-                <editable model="persoon.email" editing=false type="email"></editable>
+                <editable model="persoon.email" type="email"></editable>
             </p>
             <p data-ng-show="filledTel" >
-                <editable model="persoon.telefoon" editing=false type="number"></editable>
+                <editable model="persoon.telefoon" type="number"></editable>
             </p>
         </div>
 

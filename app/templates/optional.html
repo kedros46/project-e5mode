@@ -7,14 +7,14 @@
             <div class="form-group">
                 <label>Email</label>
                 <input type="email" name="email" class="form-control" autofocus
-                       data-ng-model="persooon.email" data-ng-model-options="{debounce: 500}" >
+                       data-ng-model="persoon.email" data-ng-model-options="{debounce: 2000}" >
 				<p ng-show="formoptional.email.$invalid && formoptional.email.$dirty">
 					De gegeven email is niet geldig</p>
             </div>
             <div class="form-group">
                 <label >Telefoon</label>
                 <input type="text"  class="form-control" data-ng-model="persoon.telefoon"
-                       ng-change="console.log('tele'); filledTel = true">
+                       data-ng-change="console.log('tele')">
             </div>
             <button data-ng-disabled="formoptional.$invalid" class="btn btn-primary btn-block"
                     data-ng-click="formprogress.action('email', '#/confirm-data')">Verder</button>

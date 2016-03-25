@@ -4,25 +4,26 @@
 
 app.controller('registerCtrl', function ($scope, $http, $location){
     $scope.persoon = {
-        voornaam: "",
-        achternaam: "",
+        voornaam: "brecht",
+        achternaam: "dhondt",
         adres: {
-            straat: "",
-            huisnr: "",
+            straat: "hoekestraat",
+            huisnr: 114,
             bus: "",
-            postcode: "",
-            gemeente: ""
+            postcode: 8300,
+            gemeente: "Knokke-heist"
         },
         geslacht: "Man",
-        gebooortedatum: new Date() ,
-        email: "",
-        telefoon: "",
+        gebooortedatum: new Date(),
+        email: "brecht46@hotmal.com",
+        telefoon: 0479099474,
 
         partners: true,
         e5acties: true
     };
 
-    $scope.format = "dd/MM/yy";
+    $scope.numberformat = ""
+    $scope.dateformat = "dd/MM/yy";
     $scope.filledBus = true;
     $scope.filledEmail = true;
     $scope.filledTel = true;
