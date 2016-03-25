@@ -2,36 +2,40 @@
  * Created by brecht on 10/03/2016.
  */
 
-app.controller('registerCtrl', function ($scope, $http, $location){
+app.controller('registerCtrl', function ($scope, $http){
+    $scope.dateformat = "dd/MM/yy";
+
     $scope.persoon = {
-        voornaam: "brecht",
-        achternaam: "dhondt",
+        voornaam: "",
+        achternaam: "",
         adres: {
-            straat: "hoekestraat",
-            huisnr: 114,
+            straat: "",
+            huisnr: "",
             bus: "",
-            postcode: 8300,
-            gemeente: "Knokke-heist"
+            postcode: "",
+            gemeente: ""
         },
         geslacht: "Man",
         gebooortedatum: new Date(),
-        email: "brecht46@hotmal.com",
-        telefoon: 0479099474,
+        email: "",
+        telefoon: "",
 
         partners: true,
         e5acties: true
     };
-
-    $scope.numberformat = ""
-    $scope.dateformat = "dd/MM/yy";
-    $scope.filledBus = true;
-    $scope.filledEmail = true;
-    $scope.filledTel = true;
-
-
-    $scope.editing = false;
-
     $scope.initialPerson = angular.copy($scope.persoon);
+
+    $scope.filledData = {
+        bus : false,
+        email: false,
+        telefoon: false,
+        filled: function(data){
+            $scope.filledData[data] = true;
+        }
+    };
+    $scope.initialFill = angular.copy($scope.filledData);
+
+
 
     $scope.formprogress = {
         name: "",
@@ -54,30 +58,9 @@ app.controller('registerCtrl', function ($scope, $http, $location){
             $scope.progress.update = $scope.maakNewPersoon;
         }
     };
-
     $scope.intialProgress = angular.copy($scope.progress);
 
-    $scope.print = function(){
-        console.log($scope.formprogress);
-    };
-
-    $scope.dialogEdit = {
-        label: "label",
-        type: "text",
-        model: ""
-    };
-
-    $scope.editInput = function($event, attrs){
-        var target = $event.target;
-        $scope.dialogEdit.label = attrs[attrs.length -1];
-
-        $scope.dialogEdit.model = "persoon";
-        attrs.forEach( function(element){
-            $scope.dialogEdit.model += "." + element;
-        });
-
-        location.href = "#changeInput";
-    };
+    /*/ ======= FUNCTIONS ========= /*/
 
     $scope.goTo = function(link){
         console.log("going to " + link);
@@ -88,6 +71,7 @@ app.controller('registerCtrl', function ($scope, $http, $location){
         $scope.persoon = angular.copy($scope.initialPerson);
         $scope.progress = angular.copy($scope.intialProgress);
         $scope.formprogress = angular.copy($scope.initialForm);
+        $scope.filledData = angular.copy($scope.initialFill);
 
         location.href = "#/Home";
     };

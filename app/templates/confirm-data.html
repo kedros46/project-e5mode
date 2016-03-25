@@ -29,7 +29,7 @@
             <p >
                 <editable model="persoon.adres.straat" type="text" required="true"></editable>
                 <editable model="persoon.adres.huisnr"  type="number" required="true"></editable>
-                <editable model="persoon.adres.bus"  type="number" data-ng-show="filledBus"></editable>
+                <editable model="persoon.adres.bus"  type="number" data-ng-show="filledData.bus"></editable>
             </p>
             <p >
                 <editable model="persoon.adres.postcode"  type="number" required="true"></editable>
@@ -39,10 +39,10 @@
                 <editable model="persoon.gebooortedatum" type="date" required="true"></editable>
             </p>
 
-            <p data-ng-show="filledEmail">
+            <p data-ng-show="filledData.email">
                 <editable model="persoon.email" type="email"></editable>
             </p>
-            <p data-ng-show="filledTel" >
+            <p data-ng-show="filledData.telefoon" >
                 <editable model="persoon.telefoon" type="number"></editable>
             </p>
         </div>

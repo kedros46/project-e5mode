@@ -6,15 +6,12 @@ app.directive("editable", function($timeout){
     return {
         restrict: 'E',
         templateUrl: "js/template/editable.html",
-        transclude: true,
         scope: {
             model: "=",
             required: "@",
             type: "@"
-
         },
         link: function(scope, element, attrs, ctrl) {
-            console.log(ctrl);
             scope.editing = false;
 
             scope.blurring = function(){
@@ -26,10 +23,15 @@ app.directive("editable", function($timeout){
             };
 
             scope.onClick = function(){
-                scope.editing = true;
-                $timeout(function() { //flushes pending actions.
-                    element.find("input")[0].focus();
-                });
+                if(attrs.model != "persoon.geslacht") {
+                    scope.editing = true;
+                    $timeout(function () { //flushes pending actions.
+                        element.find("input")[0].focus();
+                    });
+                }else{
+                    //editor disabled for Gender
+                    //change gender between "Man" and "Vrouw"
+                }
             };
 
         }
@@ -38,7 +40,21 @@ app.directive("editable", function($timeout){
 
 //TODO
 //app.directive("mradio", function(){
-//A
-//}).directive("mcheckbox", function(){
+//    return{
+//        templateUrl: "",
+//        restrict: "AE",
+//        transclude: true,
+//        scope: {
+//            name: "@",
+//            value: "@",
+//            model: "=",
+//            required: "@"
+//        },
+//        link: function(scope, element, attrs){
+//
+//        }
+//    }
+//});
+// .directive("mcheckbox", function(){
 //
 //});

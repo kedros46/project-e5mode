@@ -2,17 +2,20 @@ ip vpn: 192.168.112.100
 
 To DO's posts:
 
-- Angular-ui CSS
-- Navbar (home, name, adres, date, telefoon, email)
-- Icons and logo's where possible
-    > navbar completed phases
-    > e5logo /page
-    >
-- Annuleer knop OK
-- templating
-- variable editInput dialog
-- succes-page styling
+- Home                  implement eid-reader                                    404
 
-- implement eid-reader
-- implement scanner
--
+- GeboorteDatum	    	Min leeftijd?                                           Waiting info
+- confirm-data		    editor validation                                       404
+- Confirm-Data:date	    formatting                                              404
+- Otptional		        data-change                                             404
+- loadIcon Spinner      ~spining                                                Static
+- header                prevent skipping while form incomplete                  404
+
+- WebServices                                                                   404
+
+
+
+NOT REQUIRED
+  Position              Subject                                                 Status
+- Header			    form progress bar  <-==== 20%               ->          404
+- confirm-data:Gender   click-edit between value "Man" and "Vrouw"              editing disabled

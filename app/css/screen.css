@@ -59,7 +59,7 @@ editable >span{
 input.ng-valid{
     border: 1px limegreen solid;
 }
-input.ng-invalid{
+input.ng-invalid.ng-dirty{
     border: 1px #b22222 solid;
     background: #ffccbb;
 }
