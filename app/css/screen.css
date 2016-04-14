@@ -2,8 +2,6 @@
 body{
     font-family: Verdana, Arial, sans-serif;
     overflow-y: auto;
-}
-.app{
     background: #ffffff;
 }
 
@@ -16,7 +14,8 @@ body{
 .strong{
     font-weight: bold;
 }
-#home *{
+
+#home{
     text-align: center;
     width: 100%;
 }
@@ -32,7 +31,7 @@ ng-view header h1{
     color: #2288bb;
 }
 
-a.btn.btn-block{
+a.btn-block{
     margin-top: 20px;
 }
 
@@ -46,17 +45,11 @@ a.btn.btn-block{
 editable{
     font-size: 2rem;
 }
-editable >span{
+editable > span{
     padding: 2%;
 }
-.btn-primary[disabled] {
-    cursor: not-allowed;
-    background: lightgrey;
-    color: white;
-    border: none;
-}
 
-a.disabled {
+.disabled {
     cursor: not-allowed;
     pointer-events: none;
     opacity: .65;
@@ -73,8 +66,16 @@ input.ng-invalid.ng-dirty{
     background: #ffccbb;
 }
 
+ul.nav-pills.btn-group li a{
+   font-size: 1.8rem;
+}
+
+
+
+
+
 /* ANIMATIONS*/
-.ng-enter, .ng-leave{
+.ng-enter, .ng-leave {
     position:absolute;
     left:30px; right:30px;
     transition:0.5s all ease;
@@ -90,12 +91,11 @@ input.ng-invalid.ng-dirty{
 }
 
 /* leave animation */
-.ng-leave{
+.ng-leave {
     -webkit-animation:slideOutLeft 0.5s both ease;
     -moz-animation:slideOutLeft 0.5s both ease;
     animation:slideOutLeft 0.5s both ease;
 }
-
 
 /*slide out to the left */
 @keyframes slideOutLeft {

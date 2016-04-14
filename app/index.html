@@ -23,14 +23,13 @@
     <!--custom-->
     <script src="js/app.js"></script>
     <script src="js/controllers/registerCtrl.js"></script>
-    <script src="js/controllers/userdataCtrl.js"></script>
+	<script src="js/controllers/userdataCtrl.js"></script>
     <script src="js/directives/directives.js"></script>
 
     <link rel="stylesheet" href="css/screen.css">
 	<link rel="stylesheet" href="css/mobileInput.css">
 </head>
 
-<body data-ng-cloak >
 <div class="app container {{http.result}}" data-ng-controller="registerCtrl">
 
     <nav class="navbar  navbar-app navbar-absolute-top ">
@@ -43,12 +42,14 @@
         </ul>
 	    <!--<div formprogress-bar></div>-->
     </nav>
+
     <div class="app-body">
 	    <ng-view ></ng-view>
     </div>
 
 
-    <button class="btn fix-br fa fa-ban" data-ng-click="reset()"> Annuleer</button>
+
+	<button class="btn fix-br fa fa-ban" data-ng-click="reset()"> Annuleer</button>
 </div>
 </body>
 </html>
