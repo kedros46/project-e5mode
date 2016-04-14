@@ -29,20 +29,20 @@
             <p >
                 <editable model="persoon.adres.straat" type="text" required="true"></editable>
                 <editable model="persoon.adres.huisnr"  type="number" required="true"></editable>
-                <editable model="persoon.adres.bus"  type="number" data-ng-show="filledData.bus"></editable>
+                <editable model="persoon.adres.bus"  type="number" data-ng-show="persoon.adres.bus"></editable>
             </p>
             <p >
                 <editable model="persoon.adres.postcode"  type="number" required="true"></editable>
                 <editable model="persoon.adres.gemeente" type="text" required="true"></editable>
             </p>
-            <p >
-                <editable model="persoon.gebooortedatum" type="date" required="true"></editable>
+            <p>
+                <editable data-ng-bind="persoon.gebooortedatum | date: dateformat" model="persoon.gebooortedatum" type="date" required="true"></editable>
             </p>
 
-            <p data-ng-show="filledData.email">
+            <p data-ng-show="persoon.email">
                 <editable model="persoon.email" type="email"></editable>
             </p>
-            <p data-ng-show="filledData.telefoon" >
+            <p data-ng-show="persoon.telefoon" >
                 <editable model="persoon.telefoon" type="number"></editable>
             </p>
         </div>

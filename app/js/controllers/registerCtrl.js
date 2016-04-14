@@ -25,15 +25,6 @@ app.controller('registerCtrl', function ($scope, $http){
     };
     $scope.initialPerson = angular.copy($scope.persoon);
 
-    $scope.filledData = {
-        bus : false,
-        email: false,
-        telefoon: false,
-        filled: function(data){
-            $scope.filledData[data] = true;
-        }
-    };
-    $scope.initialFill = angular.copy($scope.filledData);
 
 
 
@@ -51,7 +42,6 @@ app.controller('registerCtrl', function ($scope, $http){
         text: "Verder",
         link: "#/optional",
         update: function(){
-            console.log("updating");
             $scope.progress.btn = "btn-success";
             $scope.progress.text = "Voltooien";
             $scope.progress.link = "#/voltooid";
@@ -71,7 +61,6 @@ app.controller('registerCtrl', function ($scope, $http){
         $scope.persoon = angular.copy($scope.initialPerson);
         $scope.progress = angular.copy($scope.intialProgress);
         $scope.formprogress = angular.copy($scope.initialForm);
-        $scope.filledData = angular.copy($scope.initialFill);
 
         location.href = "#/Home";
     };
@@ -79,7 +68,7 @@ app.controller('registerCtrl', function ($scope, $http){
 
     $scope.httpResult = {
         loading: true,
-        message: "",
+        message: "Sending Data...",
         result: "",
         response: "",
         action: function(){}

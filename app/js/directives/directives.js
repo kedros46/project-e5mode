@@ -11,8 +11,12 @@ app.directive("editable", function($timeout){
             required: "@",
             type: "@"
         },
-        link: function(scope, element, attrs, ctrl) {
+        link: function(scope, element, attrs) {
             scope.editing = false;
+
+            if(attrs.model == "persoon.gebooortedatum"){
+                element.find("span span").attr("data-ng-bind", attrs.model + "| date: 'dd/MM/yy'")
+            }
 
             scope.blurring = function(){
                 //scope.$watch(function(){return ctrl.$valid; }, function(){
@@ -33,6 +37,12 @@ app.directive("editable", function($timeout){
                     //change gender between "Man" and "Vrouw"
                 }
             };
+
+            scope.onKeyDown = function ($event) {
+                if($event.keyCode == 13){
+                    scope.blurring();
+                }
+            }
 
         }
     }

@@ -3,4 +3,5 @@
 	<span class="fa fa-pencil"></span>
 </span>
 <input type="{{type}}" name="editor" id="editor" data-ng-show="editing"
-       data-ng-model="model" ng-blur="blurring()" required="{{required}}">
+       data-ng-model="model" data-ng-keydown="onKeyDown($event)" data-ng-blur="blurring()"
+       required="{{required}}" placeholder="{{model}}">

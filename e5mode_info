@@ -1,21 +1,16 @@
 ip vpn: 192.168.112.100
 
-To DO's posts:
+//TODO
 
-- Home                  implement eid-reader                                    404
-
-- GeboorteDatum	    	Min leeftijd?                                           Waiting info
-- confirm-data		    editor validation                                       404
-- Confirm-Data:date	    formatting                                              404
-- Otptional		        data-change                                             404
-- loadIcon Spinner      ~spining                                                Static
-- header                prevent skipping while form incomplete                  404
-
-- WebServices                                                                   404
+Position                    Subject
+- Home                      implement eid-reader
+- GeboorteDatum	    	    Min leeftijd?
+- Confirm-Data:date	        formatting vs editing
+- WebServices
 
 
 
 NOT REQUIRED
-  Position              Subject                                                 Status
 - Header			    form progress bar  <-==== 20%               ->          404
-- confirm-data:Gender   click-edit between value "Man" and "Vrouw"              editing disabled
+- confirm-data:Gender   click-edit between value "Man" and "Vrouw" editing disabled
+              :general  Required items arent required here
