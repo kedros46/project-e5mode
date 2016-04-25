@@ -2,6 +2,8 @@
 body{
     font-family: Verdana, Arial, sans-serif;
     overflow-y: auto;
+}
+.app{
     background: #ffffff;
 }
 
@@ -36,16 +38,19 @@ a.btn-block{
 }
 
 .success {
-    background: lightgreen;
+    background-color: #40d025;
 }
 .fail {
-    background: lightcoral;
+    background: #ff2317;
+}
+.success, .fail{
+    color: white;
 }
 
-editable{
+editable, date-edit{
     font-size: 2rem;
 }
-editable > span{
+editable > span, date-edit > span{
     padding: 2%;
 }
 
@@ -56,6 +61,11 @@ editable > span{
     filter: alpha(opacity=65);
     -webkit-box-shadow: none;
     box-shadow: none;
+}
+button.btn[disabled]{
+    color: #000000;
+    background-color: lightgrey;
+    border: 1px solid grey;
 }
 
 input.ng-valid{

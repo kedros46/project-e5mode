@@ -1,5 +1,5 @@
 <span data-ng-click="onClick()" ng-hide="editing">
-	<span data-ng-bind="model"></span>
+	<span data-ng-bind="model | date: 'dd/MM/yy'"></span>
 	<span class="fa fa-pencil"></span>
 </span>
 <input type="{{type}}" name="editor" data-ng-show="editing"

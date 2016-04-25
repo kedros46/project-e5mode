@@ -1,12 +1,6 @@
 /**
  * Created by brecht on 10/03/2016.
  */
-
-    /*
-      * ngAnimate gives errors when included
-      * Error: $injector:unpr Unknown Provider
-      * versons should be correct...
-     */
 var app = angular.module("e5mode",[  "ngAnimate", "ngRoute", "ngSanitize",  "mobile-angular-ui"]);
 
 //routing
@@ -23,14 +17,7 @@ app.config(['$routeProvider', '$locationProvider',
     }).when('/form-date', {
         templateUrl: "templates/form-date.html"
     }).when('/confirm-data', {
-        templateUrl: "templates/confirm-data.html",
-        controller: "userdataCtrl",
-        resolve: function(){
-            $scope.filledBus = $scope.persoon.adres.bus != "";
-            $scope.filledEmail = $scope.persoon.email != "";
-            $scope.filledTel = $scope.persoon.telefoon != "";
-
-        }
+        templateUrl: "templates/confirm-data.html"
     }).when('/optional', {
         templateUrl: "templates/optional.html"
     }).when('/voltooid', {

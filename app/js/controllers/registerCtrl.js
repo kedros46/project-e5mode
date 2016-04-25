@@ -25,9 +25,6 @@ app.controller('registerCtrl', function ($scope, $http){
     };
     $scope.initialPerson = angular.copy($scope.persoon);
 
-
-
-
     $scope.formprogress = {
         name: "",
         address: "",
@@ -62,6 +59,7 @@ app.controller('registerCtrl', function ($scope, $http){
         $scope.progress = angular.copy($scope.intialProgress);
         $scope.formprogress = angular.copy($scope.initialForm);
 
+        angular.element(document).find("div").eq(0).removeClass("success fail")
         location.href = "#/Home";
     };
 
@@ -102,13 +100,13 @@ app.controller('registerCtrl', function ($scope, $http){
             $scope.httpResult.result = false;
             $scope.httpResult.response = "";
             $scope.httpResult.action = function(){
-                    $scope.goTo('#/register');
-                    angular.element(document).find("div").eq(0).removeClass("fail");
+                $scope.goTo('#/register');
+                angular.element(document).find("div").eq(0).removeClass("fail");
             };
             angular.element(document).find("div").eq(0).addClass("fail");
         }).finally(function(){
             location.href = "#/voltooid";
             $scope.httpResult.loading = false;
         });
-    };
+    }
 });

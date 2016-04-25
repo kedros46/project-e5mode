@@ -35,8 +35,8 @@
                 <editable model="persoon.adres.postcode"  type="number" required="true"></editable>
                 <editable model="persoon.adres.gemeente" type="text" required="true"></editable>
             </p>
-            <p>
-                <editable data-ng-bind="persoon.gebooortedatum | date: dateformat" model="persoon.gebooortedatum" type="date" required="true"></editable>
+            <p> <!--data-ng-bind="persoon.gebooortedatum | date: dateformat"-->
+                <date-edit  model="persoon.gebooortedatum" type="date" required="true"></date-edit>
             </p>
 
             <p data-ng-show="persoon.email">
