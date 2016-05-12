@@ -1,15 +1,17 @@
 /* app css stylesheet */
 body{
     font-family: Verdana, Arial, sans-serif;
-    overflow-y: auto;
+    width: auto;
+    height: auto;
 }
+
 .app{
     background: #ffffff;
 }
 
 .fix-br{
     margin: 0;
-    position: fixed;
+    position: absolute;
     bottom: 0;
     right: 0;
 }
@@ -22,7 +24,7 @@ body{
     width: 100%;
 }
 
-.nav > li:first-child{
+.header .nav > li:first-child img{
     padding-left: 20px;
 }
 
@@ -37,14 +39,14 @@ a.btn-block{
     margin-top: 20px;
 }
 
-.success {
-    background-color: #40d025;
-}
-.fail {
-    background: #ff2317;
-}
 .success, .fail{
     color: white;
+}
+.success {
+background-color: #40d025;
+}
+.fail {
+background: #ff2317;
 }
 
 editable, date-edit{

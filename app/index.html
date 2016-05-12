@@ -29,9 +29,9 @@
 	<link rel="stylesheet" href="css/mobileInput.css">
 </head>
 <body>
-<div class="app container {{http.result}}" data-ng-controller="registerCtrl">
+<div class="app {{http.result}}" data-ng-controller="registerCtrl">
 
-    <nav class="navbar  navbar-app navbar-absolute-top ">
+    <nav class="header navbar  navbar-app ">
         <ul class="nav nav-pills btn-group ">
             <li ><img alt="Brand" src="image/favicon.ico" ></li>
             <li ><a href="#/form-name"  class="btn" ng-class="{disabled: formprogress.name == ''}">    Naam    <i class="{{formprogress.name}}" ></i></a></li>
@@ -42,11 +42,7 @@
 	    <!--<div formprogress-bar></div>-->
     </nav>
 
-    <div class="app-body">
-	    <ng-view ></ng-view>
-    </div>
-
-
+	<div class="container ng-view" data-autoscroll ></div>
 
 	<button class="btn fix-br fa fa-ban" data-ng-click="reset()"> Annuleer</button>
 </div>
