@@ -3,14 +3,12 @@ ip vpn: 192.168.112.100
 //TODO
 
 Position                    Subject
-- Home                      implement eid-reader
 - GeboorteDatum	    	    Min leeftijd?
-- Confirm-Data:date	        formatting vs editing
 - WebServices
 
 
 
 NOT REQUIRED
-- Header			    form progress bar  <-==== 20%               ->          404
+
 - confirm-data:Gender   click-edit between value "Man" and "Vrouw" editing disabled
               :general  Required items arent required here

@@ -19,7 +19,7 @@ app.config(['$routeProvider', '$locationProvider',
     }).when('/confirm-data', {
         templateUrl: "templates/confirm-data.html"
     }).when('/optional', {
-        templateUrl: "templates/optional.html"
+        templateUrl: "templates/form-optional.html"
     }).when('/voltooid', {
         templateUrl: "templates/voltooid.html"
     }).otherwise({redirectTo: "/Home"}); //default route

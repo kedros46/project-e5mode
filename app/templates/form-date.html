@@ -4,7 +4,7 @@
     </header>
 
     <div>
-        <form name="form-date">
+        <form name="formdate">
             <fieldset >
                 <legend >Geslacht</legend>
 	            <div class="mradio">
@@ -23,7 +23,7 @@
                 <input type="date" class="form-control " data-ng-model="persoon.gebooortedatum" required autofocus/>
             </fieldset>
 
-            <button class="btn btn-primary btn-block" data-ng-disable="form-date.$invalid"
+            <button class="btn btn-primary btn-block" data-ng-disable="formdate.$invalid"
                     data-ng-click="formprogress.action('date', '#/confirm-data')">Doorgaan</button>
         </form>
     </div>
