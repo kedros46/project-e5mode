@@ -29,15 +29,15 @@
 	<link rel="stylesheet" href="css/mobileInput.css">
 </head>
 <body>
-<div class="app {{http.result}}" data-ng-controller="registerCtrl">
+<div class="app" data-ng-controller="registerCtrl">
 
     <nav class="header navbar  navbar-app ">
         <ul class="nav nav-pills btn-group ">
             <li ><img alt="Brand" src="image/favicon.ico" ></li>
-            <li ><a href="#/form-name"  class="btn" ng-class="{disabled: formprogress.name == ''}">    Naam    <i class="{{formprogress.name}}" ></i></a></li>
-            <li ><a href="#/form-address" class="btn" ng-class="{disabled: formprogress.address == ''}">Adres   <i class="{{formprogress.address}}"></i></a></li>
-            <li ><a href="#/form-date" class="btn " ng-class="{disabled: formprogress.date == ''}">    Geboortedatum   <i class="{{formprogress.date}}"></i></a></li>
-            <li ><a href="#/optional" class="btn" ng-class="{disabled: formprogress.email == ''}">     Email & Gsm     <i class="{{formprogress.email}}"></i></a></li>
+            <li ><a href="#/form-name" class="btn" ng-class="{disabled: formprogress.name == ''}">Naam<i class="{{formprogress.name}}" ></i></a></li>
+            <li ><a href="#/form-address" class="btn" ng-class="{disabled: formprogress.address == ''}">Adres<i class="{{formprogress.address}}"></i></a></li>
+            <li ><a href="#/form-date" class="btn" ng-class="{disabled: formprogress.date == ''}">Geboortedatum<i class="{{formprogress.date}}"></i></a></li>
+            <li ><a href="#/optional" class="btn" ng-class="{disabled: formprogress.email == ''}">Email & Gsm<i class="{{formprogress.email}}"></i></a></li>
         </ul>
 	    <!--<div formprogress-bar></div>-->
     </nav>

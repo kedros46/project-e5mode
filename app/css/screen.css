@@ -1,10 +1,10 @@
 /* app css stylesheet */
 body{
     font-family: Verdana, Arial, sans-serif;
-    width: auto;
-    height: auto;
 }
-
+.ng-view{
+    height: 600px;
+}
 .app{
     background: #ffffff;
 }

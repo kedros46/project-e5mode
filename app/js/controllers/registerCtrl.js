@@ -50,7 +50,6 @@ app.controller('registerCtrl', function ($scope, $http){
     /*/ ======= FUNCTIONS ========= /*/
 
     $scope.goTo = function(link){
-        console.log("going to " + link);
         location.href = link;
     };
 
@@ -82,7 +81,9 @@ app.controller('registerCtrl', function ($scope, $http){
         $http({
             method: "POST",
             url: "http://192.168.112.100:10021/web/services/AdresGUI?wsdl/",
-            data: $scope.persoon,
+            data:{
+                persoon: $scope.persoon
+            },
             timeout: 5000
         }).then(function done(response){ //done
             console.log(response);
@@ -93,7 +94,9 @@ app.controller('registerCtrl', function ($scope, $http){
                 $scope.reset();
                 angular.element(document).find("div").eq(0).removeClass("success")
             };
+
             angular.element(document).find("div").eq(0).addClass("success");
+
         }, function error(response){ //fail
             console.log(response);
             $scope.httpResult.message = "Something went wrong...";
@@ -103,6 +106,7 @@ app.controller('registerCtrl', function ($scope, $http){
                 $scope.goTo('#/register');
                 angular.element(document).find("div").eq(0).removeClass("fail");
             };
+
             angular.element(document).find("div").eq(0).addClass("fail");
         }).finally(function(){
             location.href = "#/voltooid";

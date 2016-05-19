@@ -8,7 +8,7 @@
                 <label>Email</label>
                 <input type="email" name="email" class="form-control" autofocus data-ng-change="filledData.filled('email')"
                        data-ng-model="persoon.email" data-ng-model-options="{debounce: 2000}" >
-				<p ng-show="formoptional.email.$invalid && formoptional.email.$dirty">
+				<p ng-show="formoptional.email.$invalid && formoptional.email.$dirty" style="color:red">
 					De gegeven email is niet geldig</p>
             </div>
 
@@ -17,7 +17,7 @@
                 <input type="tel"  class="form-control" data-ng-model="persoon.telefoon"
                        data-ng-change="filledData.filled('telefoon')">
             </div>
-            <button data-ng-disabled="formoptional.$invalid" class="btn btn-primary btn-block"
+            <button  class="btn btn-primary btn-block"
                     data-ng-click="formprogress.action('email', '#/confirm-data')">Verder</button>
         </form>
 
