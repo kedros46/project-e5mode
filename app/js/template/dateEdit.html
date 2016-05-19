@@ -1,7 +1,0 @@
-<span data-ng-click="onClick()" ng-hide="editing">
-	<span data-ng-bind="model | date: 'dd/MM/yy'"></span>
-	<span class="fa fa-pencil"></span>
-</span>
-<input type="{{type}}" name="editor" data-ng-show="editing"
-       data-ng-model="model" data-ng-keydown="onKeyDown($event)" data-ng-blur="blurring()"
-       required="{{required}}" placeholder="{{model}}">
