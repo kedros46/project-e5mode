@@ -1,0 +1,48 @@
+<?php
+
+/**
+ * Created by PhpStorm.
+ * User: Seagull
+ * Date: 5/17/2016
+ * Time: 10:46 AM
+ */
+class Adres
+{
+    var $AANTALRETOUREN;
+    var $ADRESNUMMER;
+    var $BUSNUMMER;
+    var $GEGEVENSNIETAANDERDEN;
+    var $GEMEENTE;
+    var $HOOFDTITULARISNUMMER;
+    var $HUISNUMMER;
+    var $OPTOUT;
+    var $POSTCODE;
+    var $POSTLANDCODE;
+    var $STRAAT;
+    var $STRAATCODE;
+    var $TAALCODE;
+    var $TELEFOONNUMMER;
+    var $TERATTENTIEVAN;
+
+
+    public function Adres($AANTALRETOUREN, $ADRESNUMMER, $BUSNUMMER, $GEGEVENSNIETAANDERDEN, $GEMEENTE, $HOOFDTITULARISNUMMER, $HUISNUMMER, $OPTOUT, $POSTCODE, $POSTLANDCODE, $STRAAT, $STRAATCODE, $TAALCODE, $TELEFOONNUMMER, $TERATTENTIEVAN)
+    {
+        $this->AANTALRETOUREN = $AANTALRETOUREN;
+        $this->ADRESNUMMER = $ADRESNUMMER;
+        $this->BUSNUMMER = $BUSNUMMER;
+        $this->GEGEVENSNIETAANDERDEN = $GEGEVENSNIETAANDERDEN;
+        $this->GEMEENTE = $GEMEENTE;
+        $this->HOOFDTITULARISNUMMER = $HOOFDTITULARISNUMMER;
+        $this->HUISNUMMER = $HUISNUMMER;
+        $this->OPTOUT = $OPTOUT;
+        $this->POSTCODE = $POSTCODE;
+        $this->POSTLANDCODE = $POSTLANDCODE;
+        $this->STRAAT = $STRAAT;
+        $this->STRAATCODE = $STRAATCODE;
+        $this->TAALCODE = $TAALCODE;
+        $this->TELEFOONNUMMER = $TELEFOONNUMMER;
+        $this->TERATTENTIEVAN = $TERATTENTIEVAN;
+    }
+
+
+}

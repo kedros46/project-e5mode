@@ -1,0 +1,11 @@
+<div  data-ng-click="ajaxResult.action()">
+    <div>
+	    <div style="padding: 15%">
+	        <h1 class="text-center" >{{ajaxResult.message}}</h1>
+		    <h2 data-ng-hide="ajaxResult.result == 'succes'" class="text-center">{{ajaxResult.response}}</h2>
+	    </div>
+	    <img src="image/ajax-loader.gif" class="center-block" data-ng-show="ajaxResult.loading" />
+        <br>
+        <p class="text-center strong" style="padding-bottom: 10%" data-ng-hide="ajaxResult.loading ">Tap to Continue</p>
+    </div>
+</div>
