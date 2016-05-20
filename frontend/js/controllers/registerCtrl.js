@@ -61,7 +61,10 @@ app.controller('registerCtrl', function ($scope) {
     };
     $scope.initialHttp = angular.copy($scope.ajaxResult);
 
-    $scope.suggestions = null;
+    $scope.suggestions = {
+        arr: null,
+        continue: false
+    };
 
     /*/ ======= FUNCTIONS ========= /*/
     $scope.parseDate = function(){
@@ -88,7 +91,8 @@ app.controller('registerCtrl', function ($scope) {
         $scope.ajaxResult.message = "Sending Data...";
         $scope.ajaxResult.response = "";
         $scope.ajaxResult.loading = true;
-        $scope.suggestions = null;
+        $scope.suggestions.arr = null;
+        $scope.suggestions.continue = false;
 
         var persoon = $scope.persoon;
         var date = $scope.parseDate();
@@ -127,10 +131,10 @@ app.controller('registerCtrl', function ($scope) {
             }
             else if (data["STRATENCOUNT"] != undefined && data["STRATENCOUNT"] != 0){
                 if( data["STRATENCOUNT"] > 1) {
-                    $scope.suggestions = data["STRATENLIJST"];
+                    $scope.suggestions.arr = data["STRATENLIJST"];
                 }
                 else {//if (data["STRATENCOUNT"] == 1) {
-                    $scope.suggestions = [data["STRATENLIJST"]];
+                    $scope.suggestions.arr = [data["STRATENLIJST"]];
                 }
             }
             else {
@@ -174,5 +178,6 @@ app.controller('registerCtrl', function ($scope) {
         $scope.persoon.adres.gemeente = gemeente;
         $scope.persoon.adres.postcode = postcode;
         $scope.persoon.adres.straat   = straat;
+        $scope.suggestions.continue = true;
     }
 });

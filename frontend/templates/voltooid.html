@@ -1,5 +1,5 @@
 <div  data-ng-click="ajaxResult.action()">
-    <div ng-hide="suggestions != null">
+    <div ng-hide="suggestions.arr != null">
 	    <div style="padding: 15%">
 	        <h1 class="text-center" >{{ajaxResult.message}}</h1>
 		    <h2 data-ng-hide="ajaxResult.succes" class="text-center">{{ajaxResult.response}}</h2>
@@ -10,17 +10,17 @@
     </div>
 
 
-	<div class="suggestions" ng-hide="suggestions == null">
+	<div class="suggestions" ng-hide="suggestions.arr == null">
 		<h3>De combinatie straat-postcode-gemeente kennen we niet. Bedoelt U:</h3>
 		<!--x => gemeente, straat, postcode-->
-		<p class="center-block suggested" ng-repeat="x in suggestions"  >
+		<p class="center-block suggested" ng-repeat="x in suggestions.arr"  >
 			<input type="radio" id="suggestion{{$index}}" name="suggestions">
 			<label for="suggestion{{$index}}" ng-click="updateInfo(x.POSTCODE, x.GEMEENTE, x.STRAAT)">
 				{{x.STRAAT}} - {{x.POSTCODE}}, {{x.GEMEENTE}}
 			</label>
 		</p>
 
-		<button class="btn btn-primary btn-block btn-lg" data-ng-click="maakNewPersoon()">Verzenden</button>
+		<button class="btn btn-primary btn-block btn-lg" data-ng-disabled="!suggestions.continue" data-ng-click="maakNewPersoon()">Verzenden</button>
 	</div>
 
 </div>
