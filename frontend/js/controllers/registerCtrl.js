@@ -15,7 +15,7 @@ app.controller('registerCtrl', function ($scope) {
             huisnr: "",
             bus: "",
             postcode: "",
-            gemeente: "knokke"
+            gemeente: ""
         },
         geslacht: "Man",
         gebooortedatum: new Date(),
