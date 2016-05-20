@@ -2622,7 +2622,7 @@ var $$AnimateQueueProvider = ['$animateProvider', function($animateProvider) {
           }
 
           // if the event changed from something like enter to leave then we do
-          // it, otherwise if it's the same then the end result will be the same too
+          // it, otherwise if it's the same then the end succes will be the same too
           if (animationCancelled || (isStructural && animationDetails.event !== event)) {
             options.domOperation();
             runner.end();
@@ -3706,7 +3706,7 @@ var ngAnimateSwapDirective = ['$animate', '$rootScope', function($animate, $root
  * ## CSS + JS Animations Together
  *
  * AngularJS 1.4 and higher has taken steps to make the amalgamation of CSS and JS animations more flexible. However, unlike earlier versions of Angular,
- * defining CSS and JS animations to work off of the same CSS class will not work anymore. Therefore the example below will only result in **JS animations taking
+ * defining CSS and JS animations to work off of the same CSS class will not work anymore. Therefore the example below will only succes in **JS animations taking
  * charge of the animation**:
  *
  * ```html

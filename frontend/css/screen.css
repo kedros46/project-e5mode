@@ -82,12 +82,39 @@ ul.nav-pills.btn-group li a{
    font-size: 1.8rem;
 }
 
+.suggestions{
+    background: white;
+    position: absolute;
+    top: 20%;
+    left: 10%;
+    right: 10%;
 
+    border: 1px solid grey;
+    box-shadow: 5px 1px 30px 1px;
+}
+.suggested{
+    border-bottom: 1px solid grey;
+    margin-left: 5%;
+    width: 90%;
+    font-size: 2em;
+}
+.suggested input{
+    display: none;
+}
+.suggested input:checked + label{
+    width: 100%;
+    background: #006ee6;
+    color: white;
+    font-weight: bold;
+    box-shadow: 1px 1px 1px 1px;
+    border-radius: 5px;
+    padding: 10px;
+}
 
 
 
 /* ANIMATIONS*/
-.ng-enter, .ng-leave {
+ng-view.ng-enter, ng-view.ng-leave {
     position:absolute;
     left:30px; right:30px;
     transition:0.5s all ease;
@@ -96,14 +123,14 @@ ul.nav-pills.btn-group li a{
 }
 
 /* enter animation */
-.ng-enter {
+ng-view.ng-enter {
     -webkit-animation:slideInRight 0.5s both ease;
     -moz-animation:slideInRight 0.5s both ease;
     animation:slideInRight 0.5s both ease;
 }
 
 /* leave animation */
-.ng-leave {
+ng-view.ng-leave {
     -webkit-animation:slideOutLeft 0.5s both ease;
     -moz-animation:slideOutLeft 0.5s both ease;
     animation:slideOutLeft 0.5s both ease;

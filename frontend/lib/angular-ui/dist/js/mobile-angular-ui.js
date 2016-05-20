@@ -1297,7 +1297,7 @@ Use `ui-outer-click-if` parameter to define a condition to enable/disable the li
     * ```
     * @scope {scope} the scope to eval callbacks
     * @param {DomElement|$element} element The element to bind to. 
-    * @param {function} callback A `function(scope, options)`, usually the result of `$parse`, that is called when an _outer click_ event happens.
+    * @param {function} callback A `function(scope, options)`, usually the succes of `$parse`, that is called when an _outer click_ event happens.
     * @param {string|function} condition Angular `$watch` expression to decide whether to run `callback` or not.
     */
    .factory('bindOuterClick', [

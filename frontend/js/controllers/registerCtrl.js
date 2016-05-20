@@ -6,19 +6,19 @@ app.controller('registerCtrl', function ($scope, $http) {
     $scope.dateformat = "dd/MM/yy";
 
     $scope.persoon = {
-        kaartnummer: "",
-        voornaam: "",
-        achternaam: "",
+        kaartnummer: 12345678,
+        voornaam: "brecht",
+        achternaam: "dhondt",
         adres: {
-            straat: "",
-            huisnr: "",
+            straat: "hoekestraat",
+            huisnr: 1,
             bus: "",
-            postcode: "",
-            gemeente: ""
+            postcode: 8000,
+            gemeente: "Brugge"
         },
         geslacht: "Man",
         gebooortedatum: new Date(),
-        email: "",
+        email: "brecht@hot.com",
         telefoon: "",
 
         partners: true,
@@ -76,7 +76,7 @@ app.controller('registerCtrl', function ($scope, $http) {
     $scope.ajaxResult = {
         loading: true,
         message: "Sending Data...",
-        result: "",
+        succes: "",
         response: "",
         action: function () {
         }
@@ -88,6 +88,7 @@ app.controller('registerCtrl', function ($scope, $http) {
         //show loader
         $scope.ajaxResult.message = "Sending Data...";
         $scope.ajaxResult.loading = true;
+        $scope.suggestions = null;
 
         var persoon = $scope.persoon;
         var date = $scope.parseDate();
@@ -119,20 +120,31 @@ app.controller('registerCtrl', function ($scope, $http) {
                 gegevensnietaanderden: nietpartner
             },
             timeout: 5000
-        }).done(function (data) {
+        })
+        .done(function (data) {
             console.log("Data:", data);
-            console.log("Fout:", data["FOUT"]);
-            if (data["FOUT"]["BERICHT"] == "" && data["RESPONSE"]["KAARTNUMMER"] !=0)  {
+            if (data["FOUT"]["BERICHT"] == "" && data["RESPONSE"]["KAARTNUMMER"] != 0) {
                 $scope.showSucces();
             }
-            else {
-                var message = data["FOUT"]["BERICHT"] != "" ? data["FOUT"]["BERICHT"] : "Er is een onbekende fout opgetreden\nControleer of uw postcode en gemeente overeen komen";
-                $scope.showError(message);
+            else if (data["STRATENCOUNT"] != undefined && data["STRATENCOUNT"] != 0){
+                if( data["STRATENCOUNT"] > 1) {
+                    //$scope.makeSuggestions(data["STRATENLIJST"]);
+                    $scope.suggestions = data["STRATENLIJST"];
+                }
+                else {//if (data["STRATENCOUNT"] == 1) {
+                    $scope.suggestions = [data["STRATENLIJST"].GEMEENTE, data["STRATENLIJST"].STRAAT, data["STRATENLIJST"].POSTCODE]
+                }
             }
-        }).fail(function (param, param2, param3) {
+            else {
+                console.log("last error");
+                $scope.showError(data["FOUT"]["BERICHT"]);
+            }
+        })
+            .fail(function (param, param2, param3) {
             console.log(param, param2, param3);
             $scope.showError("Connectie heeft gefaald");
-        }).always(function () {
+        })
+            .always(function () {
             location.href = "#/voltooid";
             $scope.ajaxResult.loading = false;
         });
@@ -140,7 +152,7 @@ app.controller('registerCtrl', function ($scope, $http) {
 
     $scope.showError = function (message) {
         $scope.ajaxResult.message = "Something went wrong...";
-        $scope.ajaxResult.result = false;
+        $scope.ajaxResult.succes = false;
         $scope.ajaxResult.response = message;
         $scope.ajaxResult.action = function () {
             $scope.goTo('#/register');
@@ -151,7 +163,7 @@ app.controller('registerCtrl', function ($scope, $http) {
 
     $scope.showSucces = function () {
         $scope.ajaxResult.message = "Thank You For Subscribing!";
-        $scope.ajaxResult.result = true;
+        $scope.ajaxResult.succes = true;
         $scope.ajaxResult.response = "";
         $scope.ajaxResult.action = function () {
             $scope.reset();
@@ -160,4 +172,15 @@ app.controller('registerCtrl', function ($scope, $http) {
 
         angular.element(document).find("div").eq(0).addClass("success");
     };
+
+    $scope.suggestions = null;
+
+    $scope.updateInfo = function(postcode, gemeente, straat){
+        console.log(postcode, gemeente, straat);
+        $scope.persoon.adres.gemeente = gemeente;
+        $scope.persoon.adres.postcode = postcode;
+        $scope.persoon.adres.straat   = straat;
+
+        console.log($scope.persoon);
+    }
 });

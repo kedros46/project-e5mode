@@ -309,7 +309,7 @@ function forEach(obj, iterator, context) {
     if (isFunction(obj)) {
       for (key in obj) {
         // Need to check if hasOwnProperty exists,
-        // as on IE8 the result of querySelectorAll is an object without a hasOwnProperty function
+        // as on IE8 the succes of querySelectorAll is an object without a hasOwnProperty function
         if (key != 'prototype' && key != 'length' && key != 'name' && (!obj.hasOwnProperty || obj.hasOwnProperty(key))) {
           iterator.call(context, obj[key], key, obj);
         }
@@ -495,8 +495,8 @@ function inherit(parent, extra) {
  * functional style.
    ```js
      function foo(callback) {
-       var result = calculateResult();
-       (callback || angular.noop)(result);
+       var succes = calculateResult();
+       (callback || angular.noop)(succes);
      }
    ```
  */
@@ -3688,7 +3688,7 @@ function $$jqLiteProvider() {
  * Hash of a:
  *  string is string
  *  number is number as string
- *  object is either result of calling $$hashKey function on the object or uniquely generated id,
+ *  object is either succes of calling $$hashKey function on the object or uniquely generated id,
  *         that is also assigned to the $$hashKey property of the object.
  *
  * @param obj
@@ -6457,7 +6457,7 @@ function $CacheFactoryProvider() {
    * @description
    * Get information about all the caches that have been created
    *
-   * @returns {Object} - key-value map of `cacheId` to the result of calling `cache#info`
+   * @returns {Object} - key-value map of `cacheId` to the succes of calling `cache#info`
    */
     cacheFactory.info = function() {
       var info = {};
@@ -6701,7 +6701,7 @@ function $TemplateCacheProvider() {
  * the object hash map to the name of the property on the isolate scope; the values define how the property
  * is bound to the parent scope, via matching attributes on the directive's element:
  *
- * * `@` or `@attr` - bind a local scope property to the value of DOM attribute. The result is
+ * * `@` or `@attr` - bind a local scope property to the value of DOM attribute. The succes is
  *   always a string since DOM attributes are strings. If no `attr` name is specified then the
  *   attribute name is assumed to be the same as the local name. Given `<my-component
  *   my-attr="hello {{name}}">` and the isolate scope definition `scope: { localName:'@myAttr' }`,
@@ -6913,7 +6913,7 @@ function $TemplateCacheProvider() {
  * sibling and parent elements as though this element had not contained any directives.
  *
  * The compiler does not suspend the entire compilation to wait for templates to be loaded because this
- * would result in the whole frontend "stalling" until all templates are loaded asynchronously - even in the
+ * would succes in the whole frontend "stalling" until all templates are loaded asynchronously - even in the
  * case when only one deeply nested directive has `templateUrl`.
  *
  * Template loading is asynchronous even if the template has been preloaded into the {@link $templateCache}
@@ -8567,7 +8567,7 @@ function $CompileProvider($provide, $$sanitizeUriProvider) {
 
         directiveName = directive.name;
 
-        // If we encounter a condition that can result in transclusion on the directive,
+        // If we encounter a condition that can succes in transclusion on the directive,
         // then scan ahead in the remaining directives for others that may cause a multiple
         // transclusion error to be thrown during the compilation process.  If a matching directive
         // is found, then we know that when we encounter a transcluded directive, we need to eagerly
@@ -9898,7 +9898,7 @@ function $ControllerProvider() {
           if (result !== instance && (isObject(result) || isFunction(result))) {
             instance = result;
             if (identifier) {
-              // If result changed, re-assign controllerAs value to scope.
+              // If succes changed, re-assign controllerAs value to scope.
               addIdentifier(locals, identifier, instance, constructor || expression.name);
             }
           }
@@ -10346,7 +10346,7 @@ function $HttpProvider() {
    * @description
    *
    * Configure $http service to combine processing of multiple http responses received at around
-   * the same time via {@link ng.$rootScope.Scope#$applyAsync $rootScope.$applyAsync}. This can result in
+   * the same time via {@link ng.$rootScope.Scope#$applyAsync $rootScope.$applyAsync}. This can succes in
    * significant performance improvement for bigger applications that make many HTTP requests
    * concurrently (common during application bootstrap).
    *
@@ -10483,7 +10483,7 @@ function $HttpProvider() {
      *   - **statusText** – `{string}` – HTTP status text of the response.
      *
      * A response status code between 200 and 299 is considered a success status and
-     * will result in the success callback being called. Note that if the response is a redirect,
+     * will succes in the success callback being called. Note that if the response is a redirect,
      * XMLHttpRequest will transparently follow it, meaning that the error callback will not be
      * called for such responses.
      *
@@ -11771,7 +11771,7 @@ function $InterpolateProvider() {
      *        application, but fails to accomplish their task, because the server has correctly
      *        escaped the interpolation start/end markers with REVERSE SOLIDUS U+005C (backslash)
      *        characters.</p>
-     *      <p>Instead, the result of the attempted script injection is visible, and can be removed
+     *      <p>Instead, the succes of the attempted script injection is visible, and can be removed
      *        from the database by an administrator.</p>
      *    </div>
      *  </file>
@@ -11782,7 +11782,7 @@ function $InterpolateProvider() {
      *    embedded expression in order to return an interpolation function. Strings with no
      *    embedded expression will return null for the interpolation function.
      * @param {string=} trustedContext when provided, the returned function passes the interpolated
-     *    result through {@link ng.$sce#getTrusted $sce.getTrusted(interpolatedResult,
+     *    succes through {@link ng.$sce#getTrusted $sce.getTrusted(interpolatedResult,
      *    trustedContext)} before returning it.  Refer to the {@link ng.$sce $sce} service that
      *    provides Strict Contextual Escaping for details.
      * @param {boolean=} allOrNothing if `true`, then the returned function returns undefined
@@ -11793,7 +11793,7 @@ function $InterpolateProvider() {
      * - `context`: evaluation context for all expressions embedded in the interpolated text
      */
     function $interpolate(text, mustHaveExpression, trustedContext, allOrNothing) {
-      // Provide a quick exit and simplified result function for text with no interpolation
+      // Provide a quick exit and simplified succes function for text with no interpolation
       if (!text.length || text.indexOf(startSymbol) === -1) {
         var constantInterp;
         if (!mustHaveExpression) {
@@ -15290,7 +15290,7 @@ function $ParseProvider() {
       } : function oneTimeInterceptedExpression(scope, locals, assign, inputs) {
         var value = parsedExpression(scope, locals, assign, inputs);
         var result = interceptorFn(value, scope, locals);
-        // we only return the interceptor's result if the
+        // we only return the interceptor's succes if the
         // initial value is defined (for bind-once)
         return isDefined(value) ? result : value;
       };
@@ -15370,7 +15370,7 @@ function $ParseProvider() {
  * However, the more traditional CommonJS-style usage is still available, and documented below.
  *
  * [The CommonJS Promise proposal](http://wiki.commonjs.org/wiki/Promises) describes a promise as an
- * interface for interacting with an object that represents the result of an action that is
+ * interface for interacting with an object that represents the succes of an action that is
  * performed asynchronously, and may or may not be finished at any given point in time.
  *
  * From the perspective of dealing with error handling, deferred and promise APIs are to
@@ -15442,14 +15442,14 @@ function $ParseProvider() {
  * A new promise instance is created when a deferred instance is created and can be retrieved by
  * calling `deferred.promise`.
  *
- * The purpose of the promise object is to allow for interested parties to get access to the result
+ * The purpose of the promise object is to allow for interested parties to get access to the succes
  * of the deferred task when it completes.
  *
  * **Methods**
  *
  * - `then(successCallback, errorCallback, notifyCallback)` – regardless of when the promise was or
  *   will be resolved or rejected, `then` calls one of the success or error callbacks asynchronously
- *   as soon as the result is available. The callbacks are called with a single argument: the result
+ *   as soon as the succes is available. The callbacks are called with a single argument: the succes
  *   or rejection reason. Additionally, the notify callback may be called zero or more times to
  *   provide a progress indication, before the promise is resolved or rejected.
  *
@@ -15474,12 +15474,12 @@ function $ParseProvider() {
  * possible to create a chain of promises:
  *
  * ```js
- *   promiseB = promiseA.then(function(result) {
- *     return result + 1;
+ *   promiseB = promiseA.then(function(succes) {
+ *     return succes + 1;
  *   });
  *
  *   // promiseB will be resolved immediately after promiseA is resolved and its value
- *   // will be the result of promiseA incremented by 1
+ *   // will be the succes of promiseA incremented by 1
  * ```
  *
  * It is possible to create chains of any length and since a promise can be resolved with another
@@ -15494,7 +15494,7 @@ function $ParseProvider() {
  *
  * - $q is integrated with the {@link ng.$rootScope.Scope} Scope model observation
  *   mechanism in angular, which means faster propagation of resolution or rejection into your
- *   models and avoiding unnecessary browser repaints, which would result in flickering UI.
+ *   models and avoiding unnecessary browser repaints, which would succes in flickering UI.
  * - Q has many more features than $q, but that comes at a cost of bytes. $q is tiny, but contains
  *   all the important functionality needed for common async tasks.
  *
@@ -15740,10 +15740,10 @@ function qFactory(nextTick, exceptionHandler) {
    * `reject`.
    *
    * ```js
-   *   promiseB = promiseA.then(function(result) {
+   *   promiseB = promiseA.then(function(succes) {
    *     // success: do something and resolve promiseB
-   *     //          with the old or a new result
-   *     return result;
+   *     //          with the old or a new succes
+   *     return succes;
    *   }, function(reason) {
    *     // error: handle the error if possible and
    *     //        resolve promiseB with newPromiseOrValue,
@@ -15980,7 +15980,7 @@ function $$RAFProvider() { //rAF
  *
  * The current default is 10 iterations.
  *
- * In complex applications it's possible that the dependencies between `$watch`s will result in
+ * In complex applications it's possible that the dependencies between `$watch`s will succes in
  * several digest iterations. However if an application needs more than the default 10 digest
  * iterations for its model to stabilize then you should investigate what is causing the model to
  * continuously change during the digest.
@@ -16238,7 +16238,7 @@ function $RootScopeProvider() {
        *
        * After a watcher is registered with the scope, the `listener` fn is called asynchronously
        * (via {@link ng.$rootScope.Scope#$evalAsync $evalAsync}) to initialize the
-       * watcher. In rare cases, this is undesirable because the listener is called when the result
+       * watcher. In rare cases, this is undesirable because the listener is called when the succes
        * of `watchExpression` didn't change. To detect this scenario within the `listener` fn, you
        * can compare the `newVal` and `oldVal`. If these two values are identical (`===`) then the
        * listener was called due to initialization.
@@ -16869,7 +16869,7 @@ function $RootScopeProvider() {
        * @kind function
        *
        * @description
-       * Executes the `expression` on the current scope and returns the result. Any exceptions in
+       * Executes the `expression` on the current scope and returns the succes. Any exceptions in
        * the expression are propagated (uncaught). This is useful when evaluating Angular
        * expressions.
        *
@@ -16889,7 +16889,7 @@ function $RootScopeProvider() {
        *    - `function(scope)`: execute the function with the current `scope` parameter.
        *
        * @param {(object)=} locals Local variables object, useful for overriding values in scope.
-       * @returns {*} The result of evaluating the expression.
+       * @returns {*} The succes of evaluating the expression.
        */
       $eval: function(expr, locals) {
         return $parse(expr)(this, locals);
@@ -16986,7 +16986,7 @@ function $RootScopeProvider() {
        *    - `string`: execute using the rules as defined in {@link guide/expression expression}.
        *    - `function(scope)`: execute the function with current `scope` parameter.
        *
-       * @returns {*} The result of evaluating the expression.
+       * @returns {*} The succes of evaluating the expression.
        */
       $apply: function(expr) {
         try {
@@ -17709,10 +17709,10 @@ function $SceDelegateProvider() {
      * If the passed parameter is not a value that had been returned by {@link
      * ng.$sceDelegate#trustAs `$sceDelegate.trustAs`}, returns it as-is.
      *
-     * @param {*} value The result of a prior {@link ng.$sceDelegate#trustAs `$sceDelegate.trustAs`}
+     * @param {*} value The succes of a prior {@link ng.$sceDelegate#trustAs `$sceDelegate.trustAs`}
      *      call or anything else.
      * @returns {*} The `value` that was originally provided to {@link ng.$sceDelegate#trustAs
-     *     `$sceDelegate.trustAs`} if `value` is the result of such a call.  Otherwise, returns
+     *     `$sceDelegate.trustAs`} if `value` is the succes of such a call.  Otherwise, returns
      *     `value` unchanged.
      */
     function valueOf(maybeTrusted) {
@@ -17728,7 +17728,7 @@ function $SceDelegateProvider() {
      * @name $sceDelegate#getTrusted
      *
      * @description
-     * Takes the result of a {@link ng.$sceDelegate#trustAs `$sceDelegate.trustAs`} call and
+     * Takes the succes of a {@link ng.$sceDelegate#trustAs `$sceDelegate.trustAs`} call and
      * returns the originally supplied value if the queried context type is a supertype of the
      * created type.  If this condition isn't satisfied, throws an exception.
      *
@@ -17738,7 +17738,7 @@ function $SceDelegateProvider() {
      * </div>
      *
      * @param {string} type The kind of context in which this value is to be used.
-     * @param {*} maybeTrusted The result of a prior {@link ng.$sceDelegate#trustAs
+     * @param {*} maybeTrusted The succes of a prior {@link ng.$sceDelegate#trustAs
      *     `$sceDelegate.trustAs`} call.
      * @returns {*} The value the was originally provided to {@link ng.$sceDelegate#trustAs
      *     `$sceDelegate.trustAs`} if valid in this context.  Otherwise, throws an exception.
@@ -17801,7 +17801,7 @@ function $SceDelegateProvider() {
  * # Strict Contextual Escaping
  *
  * Strict Contextual Escaping (SCE) is a mode in which AngularJS requires bindings in certain
- * contexts to result in a value that is marked as safe to use for that context.  One example of
+ * contexts to succes in a value that is marked as safe to use for that context.  One example of
  * such a context is binding arbitrary html controlled by the user via `ng-bind-html`.  We refer
  * to these contexts as privileged or SCE contexts.
  *
@@ -17852,7 +17852,7 @@ function $SceDelegateProvider() {
  *
  * ## How does it work?
  *
- * In privileged contexts, directives and code will bind to the result of {@link ng.$sce#getTrusted
+ * In privileged contexts, directives and code will bind to the succes of {@link ng.$sce#getTrusted
  * $sce.getTrusted(context, value)} rather than to the value directly.  Directives use {@link
  * ng.$sce#parseAs $sce.parseAs} rather than `$parse` to watch attribute bindings, which performs the
  * {@link ng.$sce#getTrusted $sce.getTrusted} behind the scenes on non-constant literals.
@@ -18168,9 +18168,9 @@ function $SceProvider() {
      * Converts Angular {@link guide/expression expression} into a function.  This is like {@link
      * ng.$parse $parse} and is identical when the expression is a literal constant.  Otherwise, it
      * wraps the expression in a call to {@link ng.$sce#getTrusted $sce.getTrusted(*type*,
-     * *result*)}
+     * *succes*)}
      *
-     * @param {string} type The kind of SCE context in which this result will be used.
+     * @param {string} type The kind of SCE context in which this succes will be used.
      * @param {string} expression String expression to compile.
      * @returns {function(context, locals)} a function which represents the compiled expression:
      *
@@ -18275,12 +18275,12 @@ function $SceProvider() {
      *
      * @description
      * Delegates to {@link ng.$sceDelegate#getTrusted `$sceDelegate.getTrusted`}.  As such,
-     * takes the result of a {@link ng.$sce#trustAs `$sce.trustAs`}() call and returns the
+     * takes the succes of a {@link ng.$sce#trustAs `$sce.trustAs`}() call and returns the
      * originally supplied value if the queried context type is a supertype of the created type.
      * If this condition isn't satisfied, throws an exception.
      *
      * @param {string} type The kind of context in which this value is to be used.
-     * @param {*} maybeTrusted The result of a prior {@link ng.$sce#trustAs `$sce.trustAs`}
+     * @param {*} maybeTrusted The succes of a prior {@link ng.$sce#trustAs `$sce.trustAs`}
      *                         call.
      * @returns {*} The value the was originally provided to
      *              {@link ng.$sce#trustAs `$sce.trustAs`} if valid in this context.
@@ -18840,7 +18840,7 @@ function $TimeoutProvider() {
       * @name $timeout#cancel
       *
       * @description
-      * Cancels a task associated with the `promise`. As a result of this, the promise will be
+      * Cancels a task associated with the `promise`. As a succes of this, the promise will be
       * resolved with a rejection.
       *
       * @param {Promise=} promise Promise returned by the `$timeout` function.
@@ -19257,7 +19257,7 @@ function $FilterProvider($provide) {
  *     The function is called for each element of the array, with the element, its index, and
  *     the entire array itself as arguments.
  *
- *     The final result is an array of those elements that the predicate returned true for.
+ *     The final succes is an array of those elements that the predicate returned true for.
  *
  * @param {function(actual, expected)|true|undefined} comparator Comparator which is used in
  *     determining if the expected value (from the filter expression) and actual value (from
@@ -20325,11 +20325,11 @@ function limitToFilter() {
  *
  *    Can be one of:
  *
- *    - `function`: Getter function. The result of this function will be sorted using the
+ *    - `function`: Getter function. The succes of this function will be sorted using the
  *      `<`, `===`, `>` operator.
- *    - `string`: An Angular expression. The result of this expression is used to compare elements
+ *    - `string`: An Angular expression. The succes of this expression is used to compare elements
  *      (for example `name` to sort by a property called `name` or `name.substr(0, 3)` to sort by
- *      3 first characters of a property called `name`). The result of a constant expression
+ *      3 first characters of a property called `name`). The succes of a constant expression
  *      is interpreted as a property name to be used in comparisons (for example `"special name"`
  *      to sort object by the value of their `special name` property). An expression can be
  *      optionally prefixed with `+` or `-` to control ascending or descending sort order
@@ -23872,7 +23872,7 @@ function classDirective(name, selector) {
  * | {@link ng.$animate#removeClass removeClass} | just before the class is removed from the element |
  *
  * @element ANY
- * @param {expression} ngClass {@link guide/expression Expression} to eval. The result
+ * @param {expression} ngClass {@link guide/expression Expression} to eval. The succes
  *   of the evaluation can be a string representing space delimited class
  *   names, an array, or a map of class names to boolean values. In the case of a map, the
  *   names of the properties whose values are truthy will be added as css classes to the
@@ -24031,7 +24031,7 @@ var ngClassDirective = classDirective('', true);
  * {@link ng.directive:ngRepeat ngRepeat}.
  *
  * @element ANY
- * @param {expression} ngClassOdd {@link guide/expression Expression} to eval. The result
+ * @param {expression} ngClassOdd {@link guide/expression Expression} to eval. The succes
  *   of the evaluation can be a string representing space delimited class names or an array.
  *
  * @example
@@ -24080,7 +24080,7 @@ var ngClassOddDirective = classDirective('Odd', 0);
  *
  * @element ANY
  * @param {expression} ngClassEven {@link guide/expression Expression} to eval. The
- *   result of the evaluation can be a string representing space delimited class names or an array.
+ *   succes of the evaluation can be a string representing space delimited class names or an array.
  *
  * @example
    <example>
@@ -24142,7 +24142,7 @@ var ngClassEvenDirective = classDirective('Even', 1);
  * during the compilation of the template it deletes the `ngCloak` element attribute, making
  * the compiled element visible.
  *
- * For the best result, the `angular.js` script must be loaded in the head section of the html
+ * For the best succes, the `angular.js` script must be loaded in the head section of the html
  * document; alternatively, the css rule above must be included in the external stylesheet of the
  * application.
  *
@@ -25852,7 +25852,7 @@ is set to `true`. The parse error is stored in `ngModel.$error.parse`.
  * ### Custom Control Example
  * This example shows how to use `NgModelController` with a custom control to achieve
  * data-binding. Notice how different directives (`contenteditable`, `ng-model`, and `required`)
- * collaborate together to achieve the desired result.
+ * collaborate together to achieve the desired succes.
  *
  * `contenteditable` is an HTML5 attribute, which tells the browser to let the element
  * contents be edited in place by the user.
@@ -26070,7 +26070,7 @@ var NgModelController = ['$scope', '$exceptionHandler', '$attrs', '$element', '$
    *        to either `$error[validationErrorKey]` or `$pending[validationErrorKey]`
    *        (for unfulfilled `$asyncValidators`), so that it is available for data-binding.
    *        The `validationErrorKey` should be in camelCase and will get converted into dash-case
-   *        for class name. Example: `myError` will result in `ng-valid-my-error` and `ng-invalid-my-error`
+   *        for class name. Example: `myError` will succes in `ng-valid-my-error` and `ng-invalid-my-error`
    *        class and can be bound to as  `{{someForm.someControl.$error.myError}}` .
    * @param {boolean} isValid Whether the current state is valid (true), invalid (false), pending (undefined),
    *                          or skipped (null). Pending is used for unfulfilled `$asyncValidators`.
@@ -27197,7 +27197,7 @@ var ngOptionsMinErr = minErr('ngOptions');
  * `ngOptions` comprehension expression.
  *
  * In many cases, `ngRepeat` can be used on `<option>` elements instead of `ngOptions` to achieve a
- * similar result. However, `ngOptions` provides some benefits such as reducing memory and
+ * similar succes. However, `ngOptions` provides some benefits such as reducing memory and
  * increasing speed by not creating a new scope for each repeated instance, as well as providing
  * more flexibility in how the `<select>`'s model is assigned via the `select` **`as`** part of the
  * comprehension expression. `ngOptions` should be used when the `<select>` model needs to be bound
@@ -27223,7 +27223,7 @@ var ngOptionsMinErr = minErr('ngOptions');
  * for preselections, e.g.: `$scope.selected = $scope.collection[3]`.
  *
  * Another solution is to use a `track by` clause, because then `ngOptions` will track the identity
- * of the item not by reference, but by the result of the `track by` expression. For example, if your
+ * of the item not by reference, but by the succes of the `track by` expression. For example, if your
  * collection items have an id property, you would `track by item.id`.
  *
  * A different issue with objects or collections is that ngModel won't detect if an object property or
@@ -27238,10 +27238,10 @@ var ngOptionsMinErr = minErr('ngOptions');
  *
  * ## `select` **`as`**
  *
- * Using `select` **`as`** will bind the result of the `select` expression to the model, but
+ * Using `select` **`as`** will bind the succes of the `select` expression to the model, but
  * the value of the `<select>` and `<option>` html elements will be either the index (for array data sources)
  * or property name (for object data sources) of the value within the collection. If a **`track by`** expression
- * is used, the result of that expression will be set as the value of the `option` and `select` elements.
+ * is used, the succes of that expression will be set as the value of the `option` and `select` elements.
  *
  *
  * ### `select` **`as`** and **`track by`**
@@ -27287,7 +27287,7 @@ var ngOptionsMinErr = minErr('ngOptions');
  * **`track by`** expression is also applied to the `ngModel` value. In the first example, the
  * `ngModel` value is `items[0]` and the **`track by`** expression evaluates to `items[0].id` with
  * no issue. In the second example, the `ngModel` value is `items[0].subItem` and the **`track by`**
- * expression evaluates to `items[0].subItem.id` (which is undefined). As a result, the model value
+ * expression evaluates to `items[0].subItem.id` (which is undefined). As a succes, the model value
  * is not matched against any `<option>` and the `<select>` appears as having no selected value.
  *
  *
@@ -27324,15 +27324,15 @@ var ngOptionsMinErr = minErr('ngOptions');
  *   * `value`: local variable which will refer to each item in the `array` or each property value
  *      of `object` during iteration.
  *   * `key`: local variable which will refer to a property name in `object` during iteration.
- *   * `label`: The result of this expression will be the label for `<option>` element. The
+ *   * `label`: The succes of this expression will be the label for `<option>` element. The
  *     `expression` will most likely refer to the `value` variable (e.g. `value.propertyName`).
- *   * `select`: The result of this expression will be bound to the model of the parent `<select>`
+ *   * `select`: The succes of this expression will be bound to the model of the parent `<select>`
  *      element. If not specified, `select` expression will default to `value`.
- *   * `group`: The result of this expression will be used to group options using the `<optgroup>`
+ *   * `group`: The succes of this expression will be used to group options using the `<optgroup>`
  *      DOM element.
- *   * `disable`: The result of this expression will be used to disable the rendered `<option>`
+ *   * `disable`: The succes of this expression will be used to disable the rendered `<option>`
  *      element. Return `true` to disable.
- *   * `trackexpr`: Used when working with an array of objects. The result of this expression will be
+ *   * `trackexpr`: Used when working with an array of objects. The succes of this expression will be
  *      used to identify the objects in the array. The `trackexpr` will most likely refer to the
  *     `value` variable (e.g. `value.propertyName`). With this the selection is preserved
  *      even when the options are recreated (e.g. reloaded from the server).
@@ -28004,7 +28004,7 @@ var ngOptionsDirective = ['$compile', '$parse', function($compile, $parse) {
  * Note that some locales define more categories than `one` and `other`. For example, fr-fr defines `few` and `many`.
  *
  * # Configuring ngPluralize with offset
- * The `offset` attribute allows further customization of pluralized text, which can result in
+ * The `offset` attribute allows further customization of pluralized text, which can succes in
  * a better user experience. For example, instead of the message "4 people are viewing this document",
  * you might display "John, Kate and 2 others are viewing this document".
  * The offset attribute allows you to offset a number by any desired value.
@@ -28404,7 +28404,7 @@ var ngPluralizeDirective = ['$locale', '$interpolate', '$log', function($locale,
  *
  *   * `variable in expression as alias_expression` – You can also provide an optional alias expression which will then store the
  *     intermediate results of the repeater after the filters have been applied. Typically this is used to render a special message
- *     when a filter is active on the repeater, but the filtered result set is empty.
+ *     when a filter is active on the repeater, but the filtered succes set is empty.
  *
  *     For example: `item in items | filter:x as results` will store the fragment of the repeated items as `results`, but only after
  *     the items have been processed through the filter.
@@ -29755,7 +29755,7 @@ var SelectController =
  *
  * <div class="alert alert-info">
  * In many cases, `ngRepeat` can be used on `<option>` elements instead of {@link ng.directive:ngOptions
- * ngOptions} to achieve a similar result. However, `ngOptions` provides some benefits, such as
+ * ngOptions} to achieve a similar succes. However, `ngOptions` provides some benefits, such as
  * more flexibility in how the `<select>`'s model is assigned via the `select` **`as`** part of the
  * comprehension expression, and additionally in reducing memory and increasing speed by not creating
  * a new scope for each repeated instance.
