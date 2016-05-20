@@ -2,39 +2,30 @@
  * Created by brecht on 10/03/2016.
  */
 
-app.controller('registerCtrl', function ($scope, $http) {
-    $scope.init = function(){
-        console.log("setting body to: " + $(window).height());
-        $(".ng-view").height($(window).height());
-    };
+app.controller('registerCtrl', function ($scope) {
+
     $scope.dateformat = "dd/MM/yy";
 
     $scope.persoon = {
-        kaartnummer: 12345678,
-        voornaam: "brecht",
-        achternaam: "dhondt",
+        kaartnummer: "",
+        voornaam: "",
+        achternaam: "",
         adres: {
-            straat: "hoekestraat",
-            huisnr: 1,
+            straat: "",
+            huisnr: "",
             bus: "",
-            postcode: 8000,
-            gemeente: "Brugge"
+            postcode: "",
+            gemeente: "knokke"
         },
         geslacht: "Man",
         gebooortedatum: new Date(),
-        email: "brecht@hot.com",
+        email: "",
         telefoon: "",
 
         partners: true,
         e5acties: true
     };
     $scope.initialPerson = angular.copy($scope.persoon);
-
-    $scope.parseDate = function(){
-        var month = $scope.persoon.gebooortedatum.getMonth().toString().length == 1 ? "0"+($scope.persoon.gebooortedatum.getMonth()+1) : $scope.persoon.gebooortedatum.getMonth()+1;
-        var date = $scope.persoon.gebooortedatum.getDate().toString().length == 1 ? "0"+$scope.persoon.gebooortedatum.getDate(): $scope.persoon.gebooortedatum.getDate();
-        return(parseInt($scope.persoon.gebooortedatum.getFullYear() + "" + month + date));
-    };
 
     $scope.formprogress = {
         name: "",
@@ -61,7 +52,23 @@ app.controller('registerCtrl', function ($scope, $http) {
     };
     $scope.intialProgress = angular.copy($scope.progress);
 
+    $scope.ajaxResult = {
+        loading: true,
+        message: "Sending Data...",
+        succes: "",
+        response: "",
+        action: function() { }
+    };
+    $scope.initialHttp = angular.copy($scope.ajaxResult);
+
+    $scope.suggestions = null;
+
     /*/ ======= FUNCTIONS ========= /*/
+    $scope.parseDate = function(){
+        var month = $scope.persoon.gebooortedatum.getMonth().toString().length == 1 ? "0"+($scope.persoon.gebooortedatum.getMonth()+1) : $scope.persoon.gebooortedatum.getMonth()+1;
+        var date = $scope.persoon.gebooortedatum.getDate().toString().length == 1 ? "0"+$scope.persoon.gebooortedatum.getDate(): $scope.persoon.gebooortedatum.getDate();
+        return(parseInt($scope.persoon.gebooortedatum.getFullYear() + "" + month + date));
+    };
 
     $scope.goTo = function (link) {
         location.href = link;
@@ -75,17 +82,6 @@ app.controller('registerCtrl', function ($scope, $http) {
         angular.element(document).find("div").eq(0).removeClass("success fail");
         location.href = "#/Home";
     };
-
-
-    $scope.ajaxResult = {
-        loading: true,
-        message: "Sending Data...",
-        succes: "",
-        response: "",
-        action: function() { }
-    };
-    $scope.initialHttp = angular.copy($scope.ajaxResult);
-
 
     $scope.maakNewPersoon = function () {
         //show loader
@@ -126,27 +122,22 @@ app.controller('registerCtrl', function ($scope, $http) {
             timeout: 5000
         })
         .done(function (data) {
-            console.log("Data:", data);
             if (data["FOUT"]["BERICHT"] == "" && data["RESPONSE"]["KAARTNUMMER"] != 0) {
                 $scope.showSucces();
             }
             else if (data["STRATENCOUNT"] != undefined && data["STRATENCOUNT"] != 0){
                 if( data["STRATENCOUNT"] > 1) {
-                    console.log("multiple suggetsions");
                     $scope.suggestions = data["STRATENLIJST"];
                 }
                 else {//if (data["STRATENCOUNT"] == 1) {
-                    console.log("1 suggestion");
-                    $scope.suggestions = [data["STRATENLIJST"].GEMEENTE, data["STRATENLIJST"].STRAAT, data["STRATENLIJST"].POSTCODE]
+                    $scope.suggestions = [data["STRATENLIJST"]];
                 }
             }
             else {
-                console.log("fatal error");
                 $scope.showError(data["FOUT"]["BERICHT"]);
             }
         })
             .fail(function (param, param2, param3) {
-            console.log(param, param2, param3);
             $scope.showError("Connectie heeft gefaald");
         })
             .always(function () {
@@ -178,8 +169,6 @@ app.controller('registerCtrl', function ($scope, $http) {
         };
         $('.app').addClass("success");
     };
-
-    $scope.suggestions = null;
 
     $scope.updateInfo = function(postcode, gemeente, straat){
         $scope.persoon.adres.gemeente = gemeente;

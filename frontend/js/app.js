@@ -5,7 +5,7 @@ var app = angular.module("e5mode",[  "ngAnimate", "ngRoute", "ngSanitize",  "mob
 
 //routing
 app.config(['$routeProvider', '$locationProvider',
-    function($routeProvider, $locationProvider, $scope) {
+    function($routeProvider) {
     $routeProvider.when('/home', {
         templateUrl: "templates/Home.html"
     }).when("/register", {
@@ -23,12 +23,4 @@ app.config(['$routeProvider', '$locationProvider',
     }).when('/voltooid', {
         templateUrl: "templates/voltooid.html"
     }).otherwise({redirectTo: "/home"}); //default route
-
-        //if(window.history && window.history.pushState) {
-        //    $locationProvider.html5Mode({
-        //        enabled: true,
-        //        requireBase: false
-        //    });
-        //}
-
 }]);

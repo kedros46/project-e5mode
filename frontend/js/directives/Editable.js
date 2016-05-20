@@ -1,6 +1,7 @@
 /**
  * Created by brecht on 10/03/2016.
  */
+
 app.directive("editable", function($timeout){
     return  {
         restrict: 'E',
