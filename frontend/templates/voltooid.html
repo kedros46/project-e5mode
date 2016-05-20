@@ -9,17 +9,18 @@
         <p class="text-center strong" style="padding-bottom: 10%" data-ng-hide="ajaxResult.loading ">Tap to Continue</p>
     </div>
 
-    <div class="suggestions" ng-hide="suggestions == null">
-	    <h3>De combinatie straat-postcode-gemeente kennen we niet. Bedoelt U:</h3>
-	    <p class="center-block suggested" ng-repeat="x in suggestions"  >
-		    <!--x => gemeente, straat, postcode-->
-		    <input type="radio" id="suggestion{{$index}}" name="suggestions">
-		    <label for="suggestion{{$index}}" ng-click="updateInfo(x.POSTCODE, x.GEMEENTE, x.STRAAT)">
-			    {{x.STRAAT}} - {{x.POSTCODE}}, {{x.GEMEENTE}}
-			</label>
-	    </p>
 
-	    <button class="btn btn-primary btn-block btn-lg" data-ng-click="maakNewPersoon()">Verzenden</button>
-    </div>
+	<div class="suggestions" ng-hide="suggestions == null">
+		<h3>De combinatie straat-postcode-gemeente kennen we niet. Bedoelt U:</h3>
+		<p class="center-block suggested" ng-repeat="x in suggestions"  >
+			&lt;!&ndash;x => gemeente, straat, postcode&ndash;&gt;
+			<input type="radio" id="suggestion{{$index}}" name="suggestions">
+			<label for="suggestion{{$index}}" ng-click="updateInfo(x.POSTCODE, x.GEMEENTE, x.STRAAT)">
+				{{x.STRAAT}} - {{x.POSTCODE}}, {{x.GEMEENTE}}
+			</label>
+		</p>
+
+		<button class="btn btn-primary btn-block btn-lg" data-ng-click="maakNewPersoon()">Verzenden</button>
+	</div>
 
 </div>

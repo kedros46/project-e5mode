@@ -3,6 +3,10 @@
  */
 
 app.controller('registerCtrl', function ($scope, $http) {
+    $scope.init = function(){
+        console.log("setting body to: " + $(window).height());
+        $(".ng-view").height($(window).height());
+    };
     $scope.dateformat = "dd/MM/yy";
 
     $scope.persoon = {
@@ -68,7 +72,7 @@ app.controller('registerCtrl', function ($scope, $http) {
         $scope.progress = angular.copy($scope.intialProgress);
         $scope.formprogress = angular.copy($scope.initialForm);
 
-        angular.element(document).find("div").eq(0).removeClass("success fail")
+        angular.element(document).find("div").eq(0).removeClass("success fail");
         location.href = "#/Home";
     };
 
@@ -78,8 +82,7 @@ app.controller('registerCtrl', function ($scope, $http) {
         message: "Sending Data...",
         succes: "",
         response: "",
-        action: function () {
-        }
+        action: function() { }
     };
     $scope.initialHttp = angular.copy($scope.ajaxResult);
 
@@ -87,6 +90,7 @@ app.controller('registerCtrl', function ($scope, $http) {
     $scope.maakNewPersoon = function () {
         //show loader
         $scope.ajaxResult.message = "Sending Data...";
+        $scope.ajaxResult.response = "";
         $scope.ajaxResult.loading = true;
         $scope.suggestions = null;
 
@@ -128,15 +132,16 @@ app.controller('registerCtrl', function ($scope, $http) {
             }
             else if (data["STRATENCOUNT"] != undefined && data["STRATENCOUNT"] != 0){
                 if( data["STRATENCOUNT"] > 1) {
-                    //$scope.makeSuggestions(data["STRATENLIJST"]);
+                    console.log("multiple suggetsions");
                     $scope.suggestions = data["STRATENLIJST"];
                 }
                 else {//if (data["STRATENCOUNT"] == 1) {
+                    console.log("1 suggestion");
                     $scope.suggestions = [data["STRATENLIJST"].GEMEENTE, data["STRATENLIJST"].STRAAT, data["STRATENLIJST"].POSTCODE]
                 }
             }
             else {
-                console.log("last error");
+                console.log("fatal error");
                 $scope.showError(data["FOUT"]["BERICHT"]);
             }
         })
@@ -145,20 +150,22 @@ app.controller('registerCtrl', function ($scope, $http) {
             $scope.showError("Connectie heeft gefaald");
         })
             .always(function () {
-            location.href = "#/voltooid";
-            $scope.ajaxResult.loading = false;
+                location.href = "#/voltooid";
+                $scope.ajaxResult.loading = false;
+                $scope.$apply();
         });
     };
 
     $scope.showError = function (message) {
+
         $scope.ajaxResult.message = "Something went wrong...";
         $scope.ajaxResult.succes = false;
         $scope.ajaxResult.response = message;
         $scope.ajaxResult.action = function () {
             $scope.goTo('#/register');
-            angular.element(document).find("div").eq(0).removeClass("fail");
+            $(".app").removeClass("fail");
         };
-        angular.element(document).find("div").eq(0).addClass("fail");
+        $(".app").addClass("fail");
     };
 
     $scope.showSucces = function () {
@@ -167,20 +174,16 @@ app.controller('registerCtrl', function ($scope, $http) {
         $scope.ajaxResult.response = "";
         $scope.ajaxResult.action = function () {
             $scope.reset();
-            angular.element(document).find("div").eq(0).removeClass("success")
+            $('.app').removeClass("success")
         };
-
-        angular.element(document).find("div").eq(0).addClass("success");
+        $('.app').addClass("success");
     };
 
     $scope.suggestions = null;
 
     $scope.updateInfo = function(postcode, gemeente, straat){
-        console.log(postcode, gemeente, straat);
         $scope.persoon.adres.gemeente = gemeente;
         $scope.persoon.adres.postcode = postcode;
         $scope.persoon.adres.straat   = straat;
-
-        console.log($scope.persoon);
     }
 });

@@ -1,12 +1,12 @@
 /* app css stylesheet */
 body{
     font-family: Verdana, Arial, sans-serif;
+
 }
-.ng-view{
-    height: 600px;
-}
+
 .app{
     background: #ffffff;
+    overflow-y: scroll;
 }
 
 .fix-br{
